@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones a tú negocio</title>
+    <link rel="preconnect" href="../css/CSScustoms.css">
+    <link rel="stylesheet" href="../css/CSScustoms.css">
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../img/mageico.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <!--h1 responsive using bootstrap-->
+        <div class="fancyh1">
+            <h1 class="text-center display-4">Encuentra tú lugar en el mundo.</h1>
+        </div>
+        <br>
+    </header>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="./locwise.html" class="relativelogo"><img src="../img/logo.png" alt="Logo" width="100"
+                        height="100"></a>
+            </div>
+            <div class="col-sm-8">
+                <h1>LocationWise</h1>
+                <h2>Más que un mapa,<span class="text-muted"> una estrategia.</span></h2>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div class="text">
+        <div class="text-center">
+            <p>LocationWise </p>
+            <p>
+                <span class="word wisteria">analiza</span>
+                <span class="word belize">identifica</span>
+                <span class="word pomegranate">compara</span>
+                <span class="word green">optimiza</span>
+                <span class="word midnight">localiza</span>
+            </p>
+        </div>
+    </div>
+    <script> /*3 horas modificando esto para que sea responsive wtf*/
+        var words = document.getElementsByClassName('word');
+        var wordArray = [];
+        var currentWord = 0;
+
+        words[currentWord].style.opacity = 1;
+        for (var i = 0; i < words.length; i++) {
+            splitLetters(words[i]);
+        }
+
+        function changeWord() {
+            var cw = wordArray[currentWord];
+            var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+            for (var i = 0; i < cw.length; i++) {
+                animateLetterOut(cw, i);
+            }
+
+            for (var i = 0; i < nw.length; i++) {
+                nw[i].className = 'letter behind';
+                nw[0].parentElement.style.opacity = 1;
+                animateLetterIn(nw, i);
+            }
+
+            currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
+        }
+
+        function animateLetterOut(cw, i) {
+            setTimeout(function () {
+                cw[i].className = 'letter out';
+            }, i * 80);
+        }
+
+        function animateLetterIn(nw, i) {
+            setTimeout(function () {
+                nw[i].className = 'letter in';
+            }, 340 + (i * 80));
+        }
+
+        function splitLetters(word) {
+            var content = word.innerHTML;
+            word.innerHTML = '';
+            var letters = [];
+            for (var i = 0; i < content.length; i++) {
+                var letter = document.createElement('span');
+                letter.className = 'letter';
+                letter.innerHTML = content.charAt(i);
+                word.appendChild(letter);
+                letters.push(letter);
+            }
+
+            wordArray.push(letters);
+        }
+
+        changeWord();
+        setInterval(changeWord, 4000);
+    </script>
+    <br>
+    <br>
+    </main>
+</body>
+
+</html>

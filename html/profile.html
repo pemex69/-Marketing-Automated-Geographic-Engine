@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tú perfil | Consulta tus datos</title>
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <!--github copilt crea la pagina enteramente con bootstrap-->
+    <header>
+        <h1>Consulta tú perfil, {username}</h1>
+    </header>
+    <main>
+        <h2>Datos Generales</h2>
+        <h3>
+            <p>Nombre de usuario: {username}</p>
+            <p>Correo electrónico: {email}</p>
+            <p>Contraseña: {password}</p>
+        </h3>
+        <!--boton para modificar alguno de estos-->
+        <br>
+        <h2>Historial de uso</h2>
+        <!--Se conecta a Postgres & getea su historial de uso, en este caso solamente de locationwise-->
+        <br>
+        <h2>Borrar tú cuenta</h2>
+        <h3>Al hacer esto pierdes acceso a todo lo relacionado a tu cuenta, incluyendo tus datos y tu historial de uso, así como los servicios comprados sin usar.</h3>
+            <br>
+            <button type="button" class="btn btn-danger">Borrar cuenta</button>
+        </h3>
+    </main>
+</body>
+</html>
