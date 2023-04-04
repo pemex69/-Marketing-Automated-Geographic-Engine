@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocationWise | Potencia tú negocio</title>
+    <link rel="shortcut icon" href="../img/logoico.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="../css/CSScustoms.css">
+    <link rel="stylesheet" href="../css/CSScustoms.css">
+    <!--LIBRERIAS DE LEAFLET-->
+    <lik rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <!--SCRIPTS DE LEAFLET DESPUÉS DE CSS {!importante}-->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
+    <script src="../bootstrap_js/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+    <script src="../js/maps.js"></script>
+    <script src="../js/pgconnector/conn.js"></script>
+</head>
+
+<body>!
+    <header>
+        <!--Create a minimalistic bootstrap navigation bar-->
+        <div class="text-center display-4">
+            <h1 class="fancyh1">Usa los datos a tu favor y convierte la información en <strong
+                    class="text-warning">oro</strong>.</h1>
+        </div>
+        <br>
+        <div class="text-justify">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="../img/logo.png" alt="Logo" width="100" height="100" class="text">
+                    </div>
+                    <div class="col-sm-8">
+                        <h1 class="shadyparagraphs">LocationWise</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>¿Qué es LocationWise?</h2>
+                    <p>LocationWise es una solución de análisis de datos que te permite analizar y visualizar la
+                        información de tu negocio en tiempo real. Con LocationWise puedes analizar la información de tu
+                        negocio y tomar decisiones basadas en datos.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>¿Cómo funciona?</h2>
+                    <p>LocationWise utiliza la información de tu negocio para analizarla y visualizarla en tiempo real.
+                        Con LocationWise puedes analizar la información de tu negocio y tomar decisiones basadas en
+                        datos.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>¿Qué puedo hacer con LocationWise?</h2>
+                    <p>LocationWise te permite analizar la información de tu negocio y tomar decisiones basadas en
+                        datos. Con LocationWise puedes analizar la información de tu negocio y tomar decisiones basadas
+                        en datos.</p>
+                </div>
+            </div>
+            <center><img src="../img/demostrativo1.png" alt="Demostración de LocationWise"></center>
+            <br>
+            <br>
+            <br>
+            <h2 class="fancyh2">Ingresa la localización de tu comercio.</h2>
+        </div>
+        <br>
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <!--Make some inputs to display info onclick when a button is clicked-->
+                    <h2 class="fancyh2 togray">Información del AGEB</h2>
+                    <br><br>
+                    <label class="betterlabels">Clave única: </label>
+                    <pre id="cvegeo">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Población total: </label>
+                    <pre id="pobtot">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Población Masculina: </label>
+                    <pre id="pobmas">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Población Femenina: </label>
+                    <pre id="pobfem">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Nivel socioeconímico predominante: </label>
+                    <pre id="lw_ecomoniapred">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Grado de escolaridad promedio: </label>
+                    <pre id="graproes">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Grado de escolaridad promedio de mujeres: </label>
+                    <pre id="graproesf">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <label class="betterlabels">Grado de escolaridad promedio de hombres: </label>
+                    <pre id="graproesm">Selecciona un punto en el mapa</pre>
+                    <br>
+                    <div class="container">
+                        <button type="button" class="btn btn-secondary" data-toggle="collapse" id="viewMoreBtn">Ver
+                            más</button>
+                        <button class="glow-on-hover buttonfix" type="button"
+                            onclick="return geolocate()">Geolocalizar</button>
+                    </div>
+
+                    <br><br>
+                    <div id="moreInfo" style="display: none;">
+                        <label class="betterlabels">Población de 12 años y más económicamente activa: </label>
+                        <pre id="pea">Selecciona un punto en el mapa</pre>
+                        <br>
+                        <label class="betterlabels">Población de 12 años y más no económicamente activa: </label>
+                        <pre id="pe_inac">Selecciona un punto en el mapa</pre>
+                        <br>
+                        <label class="betterlabels">Población masculina de 18 años y más: </label>
+                        <pre id="p_18ymas_m">Selecciona un punto en el mapa</pre>
+                        <br>
+                        <label class="betterlabels">Población femenina de 18 años y más: </label>
+                        <pre id="p_18ymas_f">Selecciona un punto en el mapa</pre>
+                        <!--Dos columnas con bootstrap-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <br>
+                                    <label class="betterlabels">Población de 0 a 14 años</label>
+                                    <pre id="pob0_14">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 65 años y más</label>
+                                    <pre id="pob65_ymas">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 15 a 64 años</label>
+                                    <pre id="pob15_64">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población con religión católica</label>
+                                    <pre id="pcatolica">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población con grupo religioso protestante / cristiano
+                                        evangélico</label>
+                                    <pre id="pro_crieva">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población sin religión o sin adscripción
+                                        religiosa</label>
+                                    <pre id="psin_relig">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 12 y más soltera o nunca unida</label>
+                                    <pre id="p12ym_sol">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 12 años y más casada o unida</label>
+                                    <pre id="p12ym_casa">Selecciona un punto en el mapa</pre>
+                                    <br>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <br>
+                                    <label class="betterlabels">Población de 18 años y más con educación
+                                        posbásica</label>
+                                    <pre id="p18ym_pb">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Grado promedio de la escolaridad femenina</label>
+                                    <pre id="graproes_f">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Grado promedio de la escolaridad masculina</label>
+                                    <pre id="graproes_m">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 15 años y más sin escolaridad</label>
+                                    <pre id="p15ym_se">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 18 a 24 años que asiste a la
+                                        escuela</label>
+                                    <pre id="p18a24a">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 12 años y más ocupada</label>
+                                    <pre id="pocupada">Selecciona un punto en el mapa</pre>
+                                    <br>
+                                    <label class="betterlabels">Población de 12 años y más desocupada</label>
+                                    <pre id="pdesocup">Selecciona un punto en el mapa</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="map" style="width: 90rem; height: 128rem; position: relative;"
+                        class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <a href="../html/index.html"></a>
+    </footer>
+    <script src="../js/functionalities.js"></script>
+</body>
+
+</html>
