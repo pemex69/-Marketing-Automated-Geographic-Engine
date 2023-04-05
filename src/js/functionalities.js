@@ -10,3 +10,7 @@ viewMoreBtn.addEventListener('click', () => {
         viewMoreBtn.innerText = 'Ver más';
     }
 });
+
+function geolocate() {
+    alert('tbc . . .');
+}

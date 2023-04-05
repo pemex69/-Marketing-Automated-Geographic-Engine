@@ -11,21 +11,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="preconnect" href="../css/CSScustoms.css">
     <link rel="stylesheet" href="../css/CSScustoms.css">
-    <!--LIBRERIAS DE LEAFLET-->
-    <lik rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <!--SCRIPTS DE LEAFLET DESPUÉS DE CSS {!importante}-->
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+   <!--LIBRERIAS DE LEAFLET-->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+   integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+<!--SCRIPTS DE LEAFLET DESPUÉS DE CSS {!importante}-->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+   integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
     <script src="../bootstrap_js/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
     <script src="../js/maps.js"></script>
-    <script src="../js/pgconnector/conn.js"></script>
+    <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
+    <script src="../bootstrap_js/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
 </head>
 
 <body>!
     <header>
-        <!--Create a minimalistic bootstrap navigation bar-->
         <div class="text-center display-4">
             <h1 class="fancyh1">Usa los datos a tu favor y convierte la información en <strong
                     class="text-warning">oro</strong>.</h1>
@@ -188,7 +188,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div id="map" style="width: 90rem; height: 128rem; position: relative;"
+                    <div id="map" style="width: 1350px; height: 900px; position: relative;"
                         class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">
                     </div>
                 </div>
