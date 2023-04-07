@@ -1,5 +1,6 @@
 const express = require('express');
-const usersRoutes = require('./src/API/Users/routes');
+const usersRoutes = require('./routes');
+const geolocationRoutes = require('../Geolocation/routes');
 
 const app = express();
 const port = 3000;
@@ -7,7 +8,7 @@ const port = 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('localhost:3000 5335');
+    res.send('so');
 });
 
 app.use('/api/v1/users', usersRoutes);

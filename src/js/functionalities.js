@@ -11,6 +11,7 @@ viewMoreBtn.addEventListener('click', () => {
     }
 });
 
+
 function geolocate() {
     alert('tbc . . .');
 }

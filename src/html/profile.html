@@ -7,23 +7,22 @@
     <title>Tú perfil | Consulta tus datos</title>
     <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="../js/profile.js"></script>
 </head>
 <body>
-    <!--github copilt crea la pagina enteramente con bootstrap-->
     <header>
-        <h1>Consulta tú perfil, {username}</h1>
+        <h1>Consulta tú perfil, <span id="username">${usr_username}</span></h1>
     </header>
     <main>
-        <h2>Datos Generales</h2>
+        <h2>Datos de usuario</h2>
         <h3>
-            <p>Nombre de usuario: {username}</p>
-            <p>Correo electrónico: {email}</p>
-            <p>Contraseña: {password}</p>
+            <p>Nombre de usuario: <span id="username0">${usr_username}</span></p>
+            <p>Correo electrónico: <span id="email">${usr_email}</span></p>
+            <p>Contraseña: <span id="pass">${usr_password}</span></p>
+            <p>ID de usuario: <span id="id">${usr_id}</span></p>
         </h3>
-        <!--boton para modificar alguno de estos-->
         <br>
         <h2>Historial de uso</h2>
-        <!--Se conecta a Postgres & getea su historial de uso, en este caso solamente de locationwise-->
         <br>
         <h2>Borrar tú cuenta</h2>
         <h3>Al hacer esto pierdes acceso a todo lo relacionado a tu cuenta, incluyendo tus datos y tu historial de uso, así como los servicios comprados sin usar.</h3>
