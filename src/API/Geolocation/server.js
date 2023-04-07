@@ -1,5 +1,4 @@
 const express = require('express');
-const usersRoutes = require('./routes');
 const geolocationRoutes = require('../Geolocation/routes');
 
 const app = express();
@@ -11,6 +10,6 @@ app.get('/', (req, res) => {
     res.send('so');
 });
 
-app.use('/api/v1/users', usersRoutes);
+app.use('/api/v1/AGEBS', geolocationRoutes);
 
 app.listen(port, () => console.log(`App escuchando en puerto ${port} . . .`));

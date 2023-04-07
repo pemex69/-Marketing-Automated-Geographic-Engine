@@ -1,6 +1,5 @@
 const express = require('express');
 const usersRoutes = require('./routes');
-const geolocationRoutes = require('../Geolocation/routes');
 const cors = require('cors');
 
 const app = express();
