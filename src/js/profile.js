@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function (pagelaod) {
-    const MAGEAPI_test = 'http://localhost:3000/api/v1/users/1';
-    fetch(MAGEAPI_test)
+document.addEventListener('DOMContentLoaded', function (dataload) {
+    const UserAPI = 'http://localhost:3000/locationwise/v1/users/1';
+    fetch(UserAPI)
         .then(response => response.json())
         .then(data => {
 
