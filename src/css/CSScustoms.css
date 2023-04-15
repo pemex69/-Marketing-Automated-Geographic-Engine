@@ -9,10 +9,6 @@
 }
 
 .navbar {
-  position: fixed;
-  display: inline-flex;
-  z-index: 5;
-  padding: 25px 0;
   background: #000000;
 }
 
@@ -258,7 +254,7 @@ p {
 }
 .banner{
   background: url("banner.jpg") no-repeat;
-  height: 5vh;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -425,7 +421,6 @@ p {
 }
 
 .buttonfix {
-  /*Moves it a little bit to the left*/
   margin-left: 20rem;
 }
 /*GLOW ON HOOVER END*/

@@ -9,26 +9,47 @@
     <link rel="shortcut icon" href="../img/logoico.ico" type="image/x-icon">
     <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="preconnect" href="../css/CSScustoms.css">
-    <link rel="stylesheet" href="../css/CSScustoms.css">
-   <!--LIBRERIAS DE LEAFLET-->
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-   integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-<!--SCRIPTS DE LEAFLET DESPUÉS DE CSS {!importante}-->
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-   integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="preconnect" href="../css/non sticky style sheet.css">
+    <link rel="stylesheet" href="../css/non sticky style sheet.css">
+    <!--LIBRERIAS DE LEAFLET-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <!--SCRIPTS DE LEAFLET DESPUÉS DE CSS {!importante}-->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
     <script src="../bootstrap_js/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
     <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
     <script src="../bootstrap_js/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
     <!--JQuery para gettear los agebs-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
     <script src="../../node_modules/wkx/dist/wkx.js" defer></script>
     <script type="module" src="../js/maps.js"></script>
 </head>
-    
-<body>!
+<header>
+    <nav class="navbar">
+        <div class="content">
+            <div class="logo">
+                <a href="#">MAGE</a>
+            </div>
+            <ul class="menu-list">
+                <div class="icon cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+                <li><a href="./home.html">Inicio</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./solutions.html">Soluciones</a></li>
+                <li><a href="./profile.html">Perfil</a></li>
+                <li><a href="./contact.html">Contactanos</a></li>
+            </ul>
+            <div class="icon menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
     <header>
         <div class="text-center display-4">
             <h1 class="fancyh1">Usa los datos a tu favor y convierte la información en <strong
@@ -202,7 +223,7 @@
     <footer>
         <a href="../html/index.html"></a>
     </footer>
-    <script src="../js/functionalities.js"></script>
+    <script src="../js/utility.js"></script>
 </body>
 
 </html>

@@ -1,81 +1,115 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>No registrado | MAGE</title>
-    <link rel="shortcut icon" href="../img/mageico.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Encuentra el lugar perfecto para tu negocio con Locationwise</title>
+  <link rel="shortcut icon" href="../img/mageico.ico" type="image/x-icon">
+  <script class="anchorjs"></script>
+  <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+  <link href="/docs/4.0/assets/css/docs.min.css" rel="stylesheet">
+  <link rel="preconnect" href="../css/CSScustoms.css">
+  <link rel="stylesheet" href="../css/CSScustoms.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </head>
-<body>
-    <!-- MAGE GEOMARKETING INDEX/LANDING PAGE -->
-    <p>MAGE =
-        Marketing
-        Automated
-        Geographic
-        Engine</p>
-    <p>mage == "Location-Wise" o lo que sea </p>
-    <h1>//MAGE Landing</h1>
-    <!--Insert ../img/magelogopng.png and make it smaller-->
-    <img src="../img/magelogopng.png" alt="Logo" width="128" height="170">
-    <br>
-    <p>Este es el landing page de //MAGE</p>
-    <p>El objetivo de este proyecto es ayudar a pequeñas empresas o pequeños
-        emprendedores a ubicarse en un
-        punto estratégico para iniciar y/o
-        escalar un negocio y mejorar su
-        presencia en el mercado tanto
-        como aumentar su número de
-        ventas</p>
-    <p>Para ello, se utilizarán datos recolectados de <a href="https://www.inegi.org.mx/datosabiertos/">INEGI</a>
-        y de <a href="https://www.google.com/maps">Google Maps</a> para
-        analizar la ubicación de los
-        negocios y la ubicación de los
-        clientes potenciales</p>
-        <br>
-    <p>El proyecto se divide en 3 partes:</p>
-    <ul>
-        <li>El análisis/recolección de datos</li>
-        <li>La creación de un modelo de datos</li>
-        <li>La creación de una aplicación web</li>
-    </ul>
-    <br>
-    <p>El análisis/recolección de datos se realizará en Python, utilizando
-        las librerías de <a href="https://pandas.pydata.org/">Pandas</a> y <a href="https://numpy.org/">Numpy</a>
-        para el análisis de datos y <a href="https://matplotlib.org/">Matplotlib</a> para la visualización en CMD</p>
-    <p>El modelo de datos se realizará en MySQL (en realidad es PostgreSQL lmao)</p>
-    <p>La aplicación web se realizará en NodeJS preferiblemente, utilizando <a href="https://getbootstrap.com/">Bootstrap</a> para el diseño
-        y <a href="https://www.chartjs.org/">ChartJS</a> para la visualización de los datos (si se puede)</p>
-    <br>
-    <p>El proyecto se encuentra en desarrollo, por lo que no hay mucho que ver por aquí</p>
-    <p>Si ayudar al desarrollo de éste proyecto open sorce, puedes hacerlo en <a href="https://github.com/pemex69/-Marketing-Automated-Geographic-Engine">GitHub</a></p>
-    <h2>PARTES: </h2>
-    <ul>
-        <li>Ricardo || Mauro || Ángel - Recolección & limpieza de datos</li>
-        <li>Mauro || Ángel - FrontEnd</li>
-        <li>Ricardo || Mauro - Backend</li>
-        <li>JJ && Jared - Documentación</li>
-    </ul>
-    <br>
-    <p>Aparte cada quién hace una parte de todo y blablabllalala</p>
-    <br>
-    <footer>Tenemos hasta Junio 💀</footer>
-    <img src="../img/brevario de herramientas.png" alt="Brevario de herramientas para desarrollar la aplicación web">
-   <center><h2><a href="./home.html">DESPUÉS DE REGISTRO</a></h2></center>
-   <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>¿Qué es Locationwise?</h3>
-            <p>Locationwise es una aplicación web que te ayuda a encontrar el lugar perfecto para tu negocio, basándose en datos de la población y de los negocios de tu zona.</p>
+<header>
+  <nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="#">MAGE</a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
         </div>
-        <div class="col-sm-4">
-            <h3>¿Cómo funciona?</h3>
-            <p>Locationwise te muestra un mapa con los negocios de tu zona, y te permite filtrarlos por tipo de negocio, así como por la cantidad de clientes potenciales que hay en tu zona.</p>
-        </div>
-        <div class="col-sm-4">
-            <h3>¿Cómo puedo usarlo?</h3>
-            <p>Para usar Locationwise, primero debes registrarte en la página, y después iniciar sesión. Una vez que hayas iniciado sesión, podrás ver el mapa con los negocios de tu zona.</p>
-        </div>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#" onclick="NotRegistered()">Blog</a></li>
+        <li><a href="#" onclick="NotRegistered()">Soluciones</a></li>
+        <li><a href="./auth.html">Registrarme</a></li>
+        <li><a href="#" onclick="NotRegistered()">Contactanos</a></li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
+  </nav>
+</header>
+<br><br><br><br><br>
+<body>
+  <main>
+      <center>
+      <h1>Empieza a escalar tú negocio <strong>hoy.</strong></h1>
+      <h2>¿Dejarás pasar otra oportunidad?</h2>
+    </center>
+    <!--PURAMENTE DEMOSTRATIVO, CONTIENE COSAS QUE NO VAMOS A HACER-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>¿Qué es MAGE?</h3>
+          <p>MAGE es una aplicación web que te ayuda a encontrar el lugar perfecto para tu negocio, basándose
+            en datos de la población y de los negocios de tu zona.</p>
+        </div>
+        <div class="col-sm-4">
+          <h3>¿Cómo funciona?</h3>
+          <p>MAGE te muestra un mapa con los negocios de tu zona, y te permite filtrarlos por tipo de negocio,
+            así como por la cantidad de clientes potenciales que hay en tu zona.</p>
+        </div>
+        <div class="col-sm-4">
+          <h3>¿Cómo puedo usarlo?</h3>
+          <p>Para usar MAGE, primero debes registrarte en la página, y después iniciar sesión. Una vez que
+            hayas iniciado sesión, podrás hacer uso de las funcionalidades de ésta página web.</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <center>
+            <a href="./solutions.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Conoce
+              nuestras soluciones</a>
+          </center>
+        </div>
+      </div>
+      <br>
+      <center><a href="./index.html">Regresa al landing . . .</a></center>
+  </main>
+  <script>
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".navbar");
+    const menuBtn = document.querySelector(".menu-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    menuBtn.onclick = () => {
+      navbar.classList.add("show");
+      menuBtn.classList.add("hide");
+      body.classList.add("disabled");
+    }
+    cancelBtn.onclick = () => {
+      body.classList.remove("disabled");
+      navbar.classList.remove("show");
+      menuBtn.classList.remove("hide");
+    }
+    window.onscroll = () => {
+      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+    }
+  </script>
+  <img src="../img/demostrativo1.png" alt="">
+  <footer>
+    <p>LocationWise® 2023</p>
+  </footer>
 </body>
+<script src="../js/utility.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>
