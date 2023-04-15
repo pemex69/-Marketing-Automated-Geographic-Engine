@@ -29,6 +29,14 @@ function NotRegistered() {
 
 }
 
+function loginredirect() {
+    window.location.href = './login.html';
+}
+
+function indexredirect() {
+    window.location.href = './index.html';
+}
+
 function geolocate() {
     alert('tbc . . .');
 }
