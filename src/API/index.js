@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const compression = require('compression');
+const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const usersRoutes = require('./Users/CRUD/routes');
+const authRoutes = require('./Users/Auth/routes');
 const geolocationRoutes = require('./Geolocation/Map/routes');
 const port = 3000;
 
@@ -21,10 +23,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.send('soo');
-});
-
 app.get ('/locationwise/setUserCookie', (req, res) => {
     res.cookie('nombre de cookie', 'cookie value', {
         maxAge: 1000 * 10,
@@ -38,7 +36,6 @@ app.get ('/locationwise/setUserCookie', (req, res) => {
 app.get('/locationwise/getUserCookie', (req, res) => {
     res.send('leyendo cookies . . .');
     console.log(req.cookies);
-
 });
 
 app.get('/locationwise/deleteUserCookie', (req, res) => {
@@ -46,8 +43,37 @@ app.get('/locationwise/deleteUserCookie', (req, res) => {
     res.send('cookie borrada');
 });
 
+app.get('/', (req, res) => {
+    res.send('soo');
+});
+
+
+
+
+
+app.post('/locationwise/v1/token', (req, res) => {
+    // Get user from database
+
+    const token = null
+    res.send({token})
+});
+
+app.get('/locationwise/v1/public', (req, res) => {
+    res.send('publico');
+});
+
+app.get('/locationwise/v1/private', (req, res) => {
+    try {
+        res.send('privado');
+    } catch (error) {
+        res.send(401).send('no autorizado');
+    }
+});
+
 app.use(express.static('public'));
 app.use('/locationwise/v1/users', usersRoutes);
 app.use('/locationwise/v1/geocode-settlement', geolocationRoutes);
 
-app.listen(port, () => console.log(`App escuchando en puerto ${port} . . .`));
+
+app.listen(port, () => 
+console.log(`App escuchando en puerto ${port} . . .`));

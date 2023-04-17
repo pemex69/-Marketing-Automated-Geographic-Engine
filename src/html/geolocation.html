@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocationWise | Potencia tú negocio</title>
+    <title>Tú resultado</title>
     <link rel="shortcut icon" href="../img/logoico.ico" type="image/x-icon">
     <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -49,8 +49,8 @@
 <body>
     <header>
         <div class="text-center display-4">
-            <h1 class="fancyh1">Usa los datos a tu favor y convierte la información en <strong
-                    class="text-warning">oro</strong>.</h1>
+            <h1 class="fancyh1">AGEB resultado: <strong id="agebAns" class="text-warning">${selected_cvegeo}</strong>
+            </h1>
         </div>
         <br>
         <div class="text-justify">
@@ -70,40 +70,58 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <h2>¿Qué es LocationWise?</h2>
-                    <p>LocationWise es una solución de análisis de datos que te permite analizar y visualizar la
-                        información de tu negocio en tiempo real. Con LocationWise puedes analizar la información de tu
-                        negocio y tomar decisiones basadas en datos.</p>
+                    <h2>¿Qué es <strong>similaridad</strong>?</h2>
+                    <p>LocationWise proporciona una herramienta para ayudar a medir la similaridad de una Área
+                        Geoestadística básica
+                        (AGEB) con respecto a otra. La similaridad se mide en base a la cantidad de clientes que
+                        tienen características similares a los clientes de su negocio.
+                    </p>
                 </div>
                 <div class="col-sm-4">
                     <h2>¿Cómo funciona?</h2>
-                    <p>Location-Wise recopila la información de una área geográfica gracias a los <a
-                            href="https://www.inegi.org.mx/datosabiertos/">datos abiertos del INEGI</a>, resume los
-                        datos más relevantes de un área geoestadística básica <a
-                            href="https://www.coneval.org.mx/Medicion/IRS/Paginas/Rezago_social_AGEB_2010.aspx">(AGEB)</a>
-                        para tú negocio y en base a eso te despliega en un mapa el AGEB con mayor probabilidad de
-                        clientes potenciales o bien con el mayor número de clientes similares a los que ya tienes.</p>
+                    <p>Moviendo la barra de similaridad, puede encontrar los asentamientos que más se parecen de acuerdo
+                        a su AGEB, esto
+                        se basa en los siguientes criterios:
+                    <ul>
+                        <li>Edad</li>
+                        <li>Nivel de estudios</li>
+                        <li>Actividad económica</li>
+                        <li>Salario</li>
+                        <li>Población total</li>
+                    </ul>
+                    </p>
                 </div>
                 <div class="col-sm-4">
-                    <h2>¿Qué puedo hacer con LocationWise?</h2>
-                    <p>LocationWise te permite analizar la información de tu negocio y tomar decisiones basadas en
-                        datos. Con LocationWise puedes analizar la información de tu negocio y tomar decisiones basadas
-                        en datos.</p>
+                    <h2>¿Ahora qué hago?</h2>
+                    <p>Después de encontrar su lugar de negocio ideal, pues no sé si quiere múdese o haga lo que quiera
+                        tampoco
+                        quiera que le resolvamos su vida
+                    </p>
                 </div>
             </div>
             <center><img src="../img/demostrativo1.png" alt="Demostración de LocationWise"></center>
             <br>
             <br>
             <br>
-            <h2 class="fancyh2">Ingresa la localización de tu comercio.</h2>
+            <h2 class="fancyh2">Similaridad en base a: <span id="agebspan"></span></h2>
         </div>
+        <br>
+        <center>
+            <div class="slider-container">
+                <input type="range" class="slider" min="1" max="100" id="myRange">                
+                <h3><span id="demo"></span> %</h3>                
+                <!--Button of similarities-->
+                <button type="button" class="btn btn-success" id="similarityButton">Calcular similaridad</button>
+
+            </div>
+        </center>
+        <br>
         <br>
         <br>
 
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <!--Make some inputs to display info onclick when a button is clicked-->
                     <h2 class="fancyh2 togray">Información del AGEB</h2>
                     <br><br>
                     <label class="betterlabels">Clave única: </label>
@@ -133,9 +151,7 @@
                     <div class="container">
                         <button type="button" class="btn btn-secondary" data-toggle="collapse" id="viewMoreBtn">Ver
                             más</button>
-                        <button class="glow-on-hover buttonfix" type="button" id="geolocateBtn">Geolocalizar</button>
                     </div>
-
                     <br><br>
                     <div id="moreInfo" style="display: none;">
                         <label class="betterlabels">Población de 12 años y más económicamente activa: </label>
@@ -194,7 +210,8 @@
                                     <label class="betterlabels">Población de 15 años y más sin escolaridad</label>
                                     <pre id="p15ym_se">Selecciona un punto en el mapa</pre>
                                     <br>
-                                    <label class="betterlabels">Población de 18 a 24 años que asiste a la escuela</label>
+                                    <label class="betterlabels">Población de 18 a 24 años que asiste a la
+                                        escuela</label>
                                     <pre id="p18a24a">Selecciona un punto en el mapa</pre>
                                     <br>
                                     <label class="betterlabels">Población de 12 años y más ocupada</label>
@@ -216,7 +233,7 @@
         </div>
     </main>
     <script src="../js/maps util.js"></script>
-    <script type="module" src="../js/geolocate.js"></script>
+    <script type="module" src="../js/core.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

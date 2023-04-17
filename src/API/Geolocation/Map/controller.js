@@ -17,7 +17,8 @@ const GetAgebByCvegeo = async (req, res) => {
     });
 };
 
+
 module.exports = {
     GetAgebByCvegeo,
-    GetAllSettlements
+    GetAllSettlements,
 };
