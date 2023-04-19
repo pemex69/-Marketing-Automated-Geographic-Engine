@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(compression());
 app.use(cookieParser());
+app.use(express.json({ extended: true }));
 
 
 app.use((req, res, next) => {
@@ -23,7 +24,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get ('/locationwise/setUserCookie', (req, res) => {
+app.get('/locationwise/setUserCookie', (req, res) => {
     res.cookie('nombre de cookie', 'cookie value', {
         maxAge: 1000 * 10,
         httpOnly: true,
@@ -48,14 +49,11 @@ app.get('/', (req, res) => {
 });
 
 
-
-
-
 app.post('/locationwise/v1/token', (req, res) => {
     // Get user from database
 
     const token = null
-    res.send({token})
+    res.send({ token })
 });
 
 app.get('/locationwise/v1/public', (req, res) => {
@@ -74,6 +72,5 @@ app.use(express.static('public'));
 app.use('/locationwise/v1/users', usersRoutes);
 app.use('/locationwise/v1/geocode-settlement', geolocationRoutes);
 
-
-app.listen(port, () => 
-console.log(`App escuchando en puerto ${port} . . .`));
+app.listen(port, () =>
+    console.log(`App escuchando en puerto ${port} . . .`));

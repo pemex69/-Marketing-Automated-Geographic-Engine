@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tú perfil | Consulta tus datos</title>
-    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="preconnect" href="../css/CSScustoms.css">
-    <link rel="stylesheet" href="../css/CSScustoms.css">
-    <script src="../js/profile.js"></script>
 
-</head> 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tú perfil | Consulta tus datos</title>
+  <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="preconnect" href="../css/CSScustoms.css">
+  <link rel="stylesheet" href="../css/CSScustoms.css">
+  <script src="../js/profile.js"></script>
+
+</head>
 
 <header>
-    <nav class="navbar">
-        <div class="content">
-          <div class="logo">
-            <a href="#">MAGE</a>
-          </div>
-          <ul class="menu-list">
-            <div class="icon cancel-btn">
-              <i class="fas fa-times"></i>
-            </div>
-            <li><a href="./home.html">Inicio</a></li>
-            <li><a href="./blog.html">Blog</a></li>
-            <li><a href="./solutions.html">Soluciones</a></li>
-            <li><a href="./profile.html">Perfil</a></li>
-            <li><a href="./contact.html">Contactanos</a></li>
-          </ul>
-          <div class="icon menu-btn">
-            <i class="fas fa-bars"></i>
-          </div>
+  <nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="#">MAGE</a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
         </div>
-      </nav>
+        <li><a href="./home.html">Inicio</a></li>
+        <li><a href="./blog.html">Blog</a></li>
+        <li><a href="./solutions.html">Soluciones</a></li>
+        <li><a href="./profile.html">Perfil</a></li>
+        <li><a href="./contact.html">Contactanos</a></li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
 </header>
 <br><br><br><br>
+
 <body>
-    <main>
-        <h1>Consulta tú perfil, <span id="username">${usr_username}</span></h1>
-        <h2>Datos de usuario</h2>
-        <h3>
-            <p>Nombre de usuario: <span id="username0">${usr_username}</span></p>
-            <p>Correo electrónico: <span id="email">${usr_email}</span></p>
-            <p>Contraseña: <span id="pass">${usr_password}</span></p>
-            <p>ID de usuario: <span id="id">${usr_id}</span></p>
-        </h3>
-        <br>
-        <h2>Historial de uso</h2>
-        <br>
-        <h2>Borrar tú cuenta</h2>
-        <h3>Al hacer esto pierdes acceso a todo lo relacionado a tu cuenta, incluyendo tus datos y tu historial de uso, así como los servicios comprados sin usar.</h3>
-            <br>
-            <button type="button" class="btn btn-danger">Borrar cuenta</button>
-        </h3>
-    </main>
+  <main>
+    <h1>Consulta tú perfil, <span id="username">${usr_username}</span></h1>
+    <h2>Datos de usuario</h2>
+    <h3>
+      <p>Nombre de usuario: <span id="username0">${usr_username}</span></p>
+      <p>Correo electrónico: <span id="email">${usr_email}</span></p>
+      <p>Contraseña: <span id="pass">${usr_password}</span></p>
+      <p>ID de usuario: <span id="id">${usr_id}</span></p>
+    </h3>
+    <br>
+    <h2>Historial de uso</h2>
+    <br>
+    <h2>Borrar tú cuenta</h2>
+    <h3>Al hacer esto pierdes acceso a todo lo relacionado a tu cuenta, incluyendo tus datos y tu historial de uso, así
+      como los servicios comprados sin usar.</h3>
+    <br>
+    <button type="button" class="btn btn-danger">Borrar cuenta</button>
+    </h3>
+  </main>
 </body>
+
 </html>

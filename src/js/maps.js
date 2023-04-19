@@ -5,13 +5,14 @@
 //wkx path: '../../node_modules/wkx/dist/wkx.js'
 let selected_cvegeo = '';
 export { selected_cvegeo };
+var mapa_agebs = L.map('map').setView([19.4, -99.1430056], 11.54);
+export { mapa_agebs };
+
 document.addEventListener('DOMContentLoaded', function () {
-    var mapa_agebs = L.map('map').setView([19.4, -99.1430056], 11.54);
     var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(mapa_agebs);
-
 
     //Fetching an API that gets a WKB geometry from database as string
     //Parse the string into a wkb object and then into a geojson object
