@@ -16,6 +16,7 @@ function geolocate(cvegeo) {
         }).then((value) => {
             if (value) {
                 window.location.href = './geolocation.html';
+                localStorage.clear();
                 localStorage.setItem("cvegeo", selected_cvegeo);
             }
         }

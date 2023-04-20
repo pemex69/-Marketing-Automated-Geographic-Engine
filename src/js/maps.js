@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         fetch(cvegeoAPI)
                             .then(response => response.json())
                             .then(data => {
-                                console.log(data);
                                 let pobtot = data[0].pobtot;
                                 let pobmas = data[0].pobmas;
                                 let pobfem = data[0].pobfem;

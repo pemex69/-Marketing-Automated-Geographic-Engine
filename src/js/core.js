@@ -2,16 +2,109 @@
 
 let cvegeo = '';
 let similarityPercent = 0;
+let agebData = [];
 import { mapa_agebs } from "./maps.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     cvegeo = localStorage.getItem("cvegeo");
-    localStorage.clear();
     if (cvegeo != null && cvegeo != undefined) {
         const agebAns = document.getElementById('agebAns');
         agebAns.innerHTML = cvegeo;
         const agebspan = document.getElementById('agebspan');
         agebspan.innerHTML = cvegeo;
+
+        let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + cvegeo;
+        fetch(cvegeoAPI)
+            .then(response => response.json())
+            .then(data => {
+                let cvegeo2 = data[0].cvegeo;
+                let pobtot2 = data[0].pobtot;
+                let pobmas2 = data[0].pobmas;
+                let pobfem2 = data[0].pobfem;
+                let lw_economiapred2 = data[0].lw_economiapred;
+                let graproes2 = data[0].graproes;
+                let graproes_f2 = data[0].graproes_f;
+                let graproes_m2 = data[0].graproes_m;
+                let pea2 = data[0].pea;
+                let pe_inac2 = data[0].pe_inac;
+                let p_18ymas_m2 = data[0].p_18ymas_m;
+                let p_18ymas_f2 = data[0].p_18ymas_f;
+                let pob0_142 = data[0].pob0_14;
+                let pob65_mas2 = data[0].pob65_mas;
+                let pob15_642 = data[0].pob15_64;
+                let pcatolica2 = data[0].pcatolica;
+                let pro_crieva2 = data[0].pro_crieva;
+                let psin_relig2 = data[0].psin_relig;
+                let p12ym_solt2 = data[0].p12ym_solt;
+                let p12ym_casa2 = data[0].p12ym_casa;
+                let p18ym_pb2 = data[0].p18ym_pb;
+                let lw_edprom2 = data[0].lw_edprom;
+                let lw_economia_e2 = data[0].lw_economia_e;
+                let p15ym_se2 = data[0].p15ym_se;
+                let p18a24a2 = data[0].p18a24a;
+                let pocupada2 = data[0].pocupada;
+                let pdesocup2 = data[0].pdesocup;
+
+                let cvegeo = document.getElementById('cvegeo2');
+                let pobtot = document.getElementById('pobtot2');
+                let pobmas = document.getElementById('pobmas2');
+                let pobfem = document.getElementById('pobfem2');
+                let lw_economiapred = document.getElementById('lw_economiapred2');
+                let graproes = document.getElementById('graproes2');
+                let graproes_f = document.getElementById('graproes_f2');
+                let graproes_m = document.getElementById('graproes_m2');
+                let pea = document.getElementById('pea2');
+                let pe_inac = document.getElementById('pe_inac2');
+                let p_18ymas_m = document.getElementById('p_18ymas_m2');
+                let p_18ymas_f = document.getElementById('p_18ymas_f2');
+                let pob0_14 = document.getElementById('pob0_142');
+                let pob65_mas = document.getElementById('pob65ymas2');
+                let pob15_64 = document.getElementById('pob15_642');
+                let pcatolica = document.getElementById('pcatolica2');
+                let pro_crieva = document.getElementById('pro_crieva2');
+                let psin_relig = document.getElementById('psin_relig2');
+                let p12ym_solt = document.getElementById('p12ym_solt2');
+                let p12ym_casa = document.getElementById('p12ym_casa2');
+                let p18ym_pb = document.getElementById('p18ym_pb2');
+                let lw_edprom = document.getElementById('lw_edprom2');
+                let lw_economia_e = document.getElementById('lw_economia_e2');
+                let p15ym_se = document.getElementById('p15ym_se2');
+                let p18a24a = document.getElementById('p18a24a2');
+                let pocupada = document.getElementById('pocupada2');
+                let pdesocup = document.getElementById('pdesocup2');
+
+                cvegeo.innerHTML = cvegeo2;
+                pobtot.innerHTML = pobtot2;
+                pobmas.innerHTML = pobmas2;
+                pobfem.innerHTML = pobfem2;
+                lw_economiapred.innerHTML = lw_economiapred2;
+                graproes.innerHTML = graproes2;
+                graproes_f.innerHTML = graproes_f2;
+                graproes_m.innerHTML = graproes_m2;
+                pea.innerHTML = pea2;
+                pe_inac.innerHTML = pe_inac2;
+                p_18ymas_m.innerHTML = p_18ymas_m2;
+                p_18ymas_f.innerHTML = p_18ymas_f2;
+                pob0_14.innerHTML = pob0_142;
+                pob65_mas.innerHTML = pob65_mas2;
+                pob15_64.innerHTML = pob15_642;
+                pcatolica.innerHTML = pcatolica2;
+                pro_crieva.innerHTML = pro_crieva2;
+                psin_relig.innerHTML = psin_relig2;
+                p12ym_solt.innerHTML = p12ym_solt2;
+                p12ym_casa.innerHTML = p12ym_casa2;
+                p18ym_pb.innerHTML = p18ym_pb2;
+                lw_edprom.innerHTML = lw_edprom2;
+                lw_economia_e.innerHTML = lw_economia_e2;
+                p15ym_se.innerHTML = p15ym_se2;
+                p18a24a.innerHTML = p18a24a2;
+                pocupada.innerHTML = pocupada2;
+                pdesocup.innerHTML = pdesocup2;
+                
+            });
+
+
+
 
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
@@ -21,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             similarityPercent = parseFloat(this.value);
         }
     } else {
-        alert('Nodemon is off, please turn it on to use the app\nNodemon está apagado, por favor enciéndelo para usar la app\nnpm start');
+        alert('Nodemon is off, please turn it on to use the app\nNodemon está apagado, por favor enciéndelo para usar la app\nnpm start\n\n\no no tienes tu token de cvegeo que cagado');
     }
 });
 
@@ -101,14 +194,13 @@ function getSimilarSettlements(cvegeo, similarity) {
                                     else {
                                         swal({
                                             title: "Éxito",
-                                            text: "Se han encontrado " + cvegeos.length + " AGEBS similares",
+                                            text: "Se han encontrado " + cvegeos.length + " AGEBS similares\nDesplegando en mapa . . .",
                                             icon: "success",
                                             button: "Continuar",
                                             html: true
                                         })
                                             .then((willProceed) => {
                                                 if (willProceed) {
-                                                    alert('continuar');
                                                     // Remove all GeoJSON layers from the map
                                                     mapa_agebs.eachLayer(function (layer) {
                                                         mapa_agebs.removeLayer(layer);
