@@ -1,7 +1,16 @@
-import { mapa_agebs } from "./maps.js";
+import { mapa_agebs } from "./input maps.js";
 let InputsData = []
 let displays = 0;
 let cvegeos = [];
+let NivelSocioeconomico = '';
+let Edades = '';
+let Escolaridad = '';
+let SituacionEconomica = '';
+let SituacionEscolar = '';
+let SituacionConyugal = '';
+let Religion = '';
+let Limitaciones = '';
+let NivelSocioeconomicoLabelConst = '';
 
 document.addEventListener("DOMContentLoaded", function () {
     InputsData = localStorage.getItem("InputsData");
@@ -10,14 +19,55 @@ document.addEventListener("DOMContentLoaded", function () {
         cvegeos.push(element.cvegeo);
     });
 
-    let NivelSocioeconomico = localStorage.getItem("NivelSocioeconomico");
-    let Edades = localStorage.getItem("Edades");
-    let Escolaridad = localStorage.getItem("Escolaridad");
-    let SituacionEconomica = localStorage.getItem("SituacionEconomica");
-    let SituacionEscolar = localStorage.getItem("SituacionEscolar");
-    let SituacionConyugal = localStorage.getItem("SituacionConyugal");
-    let Religion = localStorage.getItem("Religion");
-    let Limitaciones = localStorage.getItem("Limitacion");
+    NivelSocioeconomico = localStorage.getItem("NivelSocioeconomico");
+    NivelSocioeconomicoLabelConst = NivelSocioeconomico;
+
+    if (NivelSocioeconomicoLabelConst == 'A%2FB') {
+        NivelSocioeconomicoLabelConst = 'lw_economia_ab';
+    }
+    else if (NivelSocioeconomicoLabelConst == 'C+') {
+        NivelSocioeconomicoLabelConst = 'lw_economia_cp';
+    }
+    else if (NivelSocioeconomicoLabelConst == 'C') {
+        NivelSocioeconomicoLabelConst = 'lw_economia_c';
+    }
+    else if (NivelSocioeconomicoLabelConst == 'D+') {
+        NivelSocioeconomicoLabelConst = 'lw_economia_dp';
+    }
+    else if (NivelSocioeconomicoLabelConst == 'D') {
+        NivelSocioeconomicoLabelConst = 'lw_economia_d';
+    }
+    else if (NivelSocioeconomicoLabelConst == 'E') {
+        NivelSocioeconomicoLabelConst = 'lw_economia_e';
+    }
+
+    Edades = localStorage.getItem("Edades");
+    Escolaridad = localStorage.getItem("Escolaridad");
+    SituacionEconomica = localStorage.getItem("SituacionEconomica");
+    SituacionEscolar = localStorage.getItem("SituacionEscolar");
+    SituacionConyugal = localStorage.getItem("SituacionConyugal");
+    Religion = localStorage.getItem("Religion");
+    Limitaciones = localStorage.getItem("Limitacion");
+
+    if (NivelSocioeconomico == 'A%2FB') {
+        NivelSocioeconomico = 'Próspero';
+    }
+    else if (NivelSocioeconomico == 'C+') {
+        NivelSocioeconomico = 'Alto';
+    }
+    else if (NivelSocioeconomico == 'C') {
+        NivelSocioeconomico = 'Medio Alto';
+    }
+    else if (NivelSocioeconomico == 'D+') {
+        NIvelSocioeconomico = 'Medio Bajo';
+    }
+    else if (NivelSocioeconomico == 'D') {
+        NivelSocioeconomico = 'Bajo';
+    }
+    else if (NivelSocioeconomico == 'E') {
+        NivelSocioeconomico = 'Precario';
+    }
+
 
     if (Escolaridad == 'null') {
         Escolaridad = 'No se toma en cuenta';
@@ -37,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (Limitaciones == 'null') {
         Limitaciones = 'No se toma en cuenta';
     }
-
     let nivelsocioeconomico = document.getElementById("nivelsocioeconomico");
     let edades = document.getElementById("edades");
     let escolaridad = document.getElementById("escolaridad");
@@ -123,7 +172,6 @@ function loadAGEBS(displays) {
                                             fetch(cvegeoAPI)
                                                 .then(response => response.json())
                                                 .then(data => {
-                                                    console.log(data);
                                                     let pobtot = data[0].pobtot;
                                                     let pobmas = data[0].pobmas;
                                                     let pobfem = data[0].pobfem;
@@ -206,15 +254,52 @@ function loadAGEBS(displays) {
                                                     p18a24aElement.innerHTML = p18a24a;
                                                     pocupadaElement.innerHTML = pocupada;
                                                     pdesocupElement.innerHTML = pdesocup;
-                                                }
-                                                )
+
+                                                    let coreNivelSocioeconomico = data[0][NivelSocioeconomicoLabelConst];
+                                                    let coreNivelSocioeconomicoElement = document.getElementById('coreNivelSocioeconomico');
+                                                    coreNivelSocioeconomicoElement.innerHTML = coreNivelSocioeconomico;
+
+                                                    let coreEdades = data[0][Edades];
+                                                    let coreEdadesElement = document.getElementById('coreEdades');
+                                                    coreEdadesElement.innerHTML = coreEdades;
+
+                                                    if (Escolaridad != 'null') {
+                                                        let coreEscolaridad = data[0][Escolaridad];
+                                                        let coreEscolaridadElement = document.getElementById('coreEscolaridad');
+                                                        coreEscolaridadElement.innerHTML = coreEscolaridad;
+                                                    }
+                                                    if (SituacionEconomica != 'null') {
+                                                        let coreSituacionEconomica = data[0][SituacionEconomica];
+                                                        let coreSituacionEconomicaElement = document.getElementById('coreSituacionEconomica');
+                                                        coreSituacionEconomicaElement.innerHTML = coreSituacionEconomica;
+                                                    }
+                                                    if (SituacionEscolar != 'null') {
+                                                        let coreSituacionEscolar = data[0][SituacionEscolar];
+                                                        let coreSituacionEscolarElement = document.getElementById('coreSituacionEscolar');
+                                                        coreSituacionEscolarElement.innerHTML = coreSituacionEscolar;
+                                                    }
+                                                    if (SituacionConyugal != 'null') {
+                                                        let coreSituacionConyugal = data[0][SituacionConyugal];
+                                                        let coreSituacionConyugalElement = document.getElementById('coreSituacionConyugal');
+                                                        coreSituacionConyugalElement.innerHTML = coreSituacionConyugal;
+                                                    }
+                                                    if (Religion != 'null') {
+                                                        let coreReligion = data[0][Religion];
+                                                        let coreReligionElement = document.getElementById('coreReligion');
+                                                        coreReligionElement.innerHTML = coreReligion;
+                                                    }
+                                                    if (Limitaciones != 'null') {
+                                                        let coreLimitaciones = data[0][Limitaciones];
+                                                        let coreLimitacionesElement = document.getElementById('coreLimitaciones');
+                                                        coreLimitacionesElement.innerHTML = coreLimitaciones;
+                                                    }
+                                                })
                                                 .catch(error => console.error(error));
                                         }).addTo(mapa_agebs);
-
+                                    swal("¡Listo!", "Ya puedes visualizar las zonas", "success");
                                 }
                             });
 
-                            // swal("¡Listo!", "Ya puedes visualizar las zonas", "success");
                         }).catch(err => {
                             swal("Error", "Hubo un error.", "error");
                             console.log(err);
