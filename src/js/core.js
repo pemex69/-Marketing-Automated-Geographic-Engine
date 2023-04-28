@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 p18a24a.innerHTML = p18a24a2;
                 pocupada.innerHTML = pocupada2;
                 pdesocup.innerHTML = pdesocup2;
-                
+
             });
 
 
@@ -138,15 +138,12 @@ function getSimilarSettlements(cvegeo, similarity) {
                 if (willProceed) {
                     swal(`En caso de inexistencia de AGEBS reintentar con un porcentaje más bajo o contactar a helpme.mage@gmail.com\n
             Obteniendo AGEBS similares para ${cvegeo} con un porcentaje de similaridad del ${similarity}% . . .`)
-                    console.log(`cvegeo: ${cvegeo}, percentage: ${similarity}%`);
-
                     let AGEBData = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + cvegeo;
                     fetch(AGEBData)
                         .then(response => response.json())
                         .then(data => {
                             console.log(data);
-                            //router.get('/getsimilarsettlements/:pobtotSTART/:pobtotEND/:lw_economiapred/:graproesSTART/:graproesEND/:lw_edpromSTART/:lw_edpromEND', controller.GetSimilarSettlements);
-                            //app.use('/locationwise/v1/geocode-settlement', geolocationRoutes);
+
                             let pobtot = parseFloat(data[0].pobtot);
                             let lw_economiapred = data[0].lw_economiapred.toString();
                             let graproes = parseFloat(data[0].graproes);
@@ -159,11 +156,11 @@ function getSimilarSettlements(cvegeo, similarity) {
                             let graproesEND = parseFloat(graproes + (graproes - graproesSTART));
                             let lw_edpromSTART = parseFloat(lw_edprom * percent);
                             let lw_edpromEND = parseFloat(lw_edprom + (lw_edprom - lw_edpromSTART));
-                            //const GetSimilarSettlements = 'SELECT t.*, CTID FROM "Consults_schema"."AGEB DATA CDMX" t WHERE t.lw_economiapred = $1 AND t.pobtot BETWEEN $2 AND $3 AND t.graproes BETWEEN $4 AND $5 AND t.lw_edprom BETWEEN $6 AND $7';
 
                             if (lw_economiapred == 'A/B') {
                                 lw_economiapred = 'A%2FB';
                             }
+
                             let similarSettlements = 'http://localhost:3000/locationwise/v1/geocode-settlement/getsimilarsettlements/' + lw_economiapred + '/' + pobtotSTART + '/' + pobtotEND + '/' + graproesSTART + '/' + graproesEND + '/' + lw_edpromSTART + '/' + lw_edpromEND;
                             fetch(similarSettlements)
                                 .then(response => response.json())
@@ -215,7 +212,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                                                         .then(data => {
 
                                                             data.forEach(element => {
-                                                                //si la cvegeo esta en el array de cvegeos se pinta ese ageb en el mapa
+                                                                //if cvegeo is on array of cvegeos displays it on map
                                                                 if (cvegeos.includes(element.cvegeo)) {
                                                                     let geojson = JSON.parse(element.st_asgeojson);
                                                                     L.geoJSON(geojson)
@@ -254,7 +251,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                                                                                     let p18a24a = data[0].p18a24a;
                                                                                     let pocupada = data[0].pocupada;
                                                                                     let pdesocup = data[0].pdesocup;
-                                                                                    //
+
                                                                                     let cvegeoElement = document.getElementById('cvegeo');
                                                                                     let pobtotElement = document.getElementById('pobtot');
                                                                                     let pobmasElement = document.getElementById('pobmas');
@@ -282,7 +279,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                                                                                     let p18a24aElement = document.getElementById('p18a24a');
                                                                                     let pocupadaElement = document.getElementById('pocupada');
                                                                                     let pdesocupElement = document.getElementById('pdesocup');
-                                                                                    //
+
                                                                                     cvegeoElement.innerHTML = selected_cvegeo;
                                                                                     pobtotElement.innerHTML = pobtot;
                                                                                     pobmasElement.innerHTML = pobmas;
@@ -322,10 +319,10 @@ function getSimilarSettlements(cvegeo, similarity) {
                                             });
                                     }
                                 })
-                                .catch(error => console.log("second promise - " + error));
+                                .catch(error => console.log("Second promise error - " + error));
 
                         })
-                        .catch(error => console.log("first promise - " + error));
+                        .catch(error => console.log("First promise error - " + error));
                 } else {
                     swal("No te preocupes, tienes cálculos ilimitados");
                 }

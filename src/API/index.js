@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const usersRoutes = require('./Users/CRUD/routes');
 const authRoutes = require('./Users/Auth/routes');
 const geolocationRoutes = require('./Geolocation/Map/routes');
+const customersInputsRoutes = require('./Geolocation/Inputs/routes');
 const port = 3000;
 
 const app = express();
@@ -71,6 +72,7 @@ app.get('/locationwise/v1/private', (req, res) => {
 app.use(express.static('public'));
 app.use('/locationwise/v1/users', usersRoutes);
 app.use('/locationwise/v1/geocode-settlement', geolocationRoutes);
+app.use('/locationwise/v1/customers-inputs', customersInputsRoutes);
 
 app.listen(port, () =>
     console.log(`App escuchando en puerto ${port} . . .`));

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tú resultado</title>
+    <link rel="shortcut icon" href="../img/logoico.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="../css/non sticky style sheet.css">
+    <link rel="stylesheet" href="../css/non sticky style sheet.css">
+    <!--LIBRERIAS DE LEAFLET-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <!--SCRIPTS DE LEAFLET DESPUÉS DE CSS {!importante}-->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
+    <script src="../leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+    <!--Carga la libreria de ajax para que pueda leer los archivos de geojson-->
+    <script src="../leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+    <script type="module" src="../js/maps.js"></script>
+</head>
+<header>
+    <nav class="navbar">
+        <div class="content">
+            <div class="logo">
+                <a href="#">MAGE</a>
+            </div>
+            <ul class="menu-list">
+                <div class="icon cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+                <li><a href="./home.html">Inicio</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./solutions.html">Soluciones</a></li>
+                <li><a href="./profile.html">Perfil</a></li>
+                <li><a href="./contact.html">Contactanos</a></li>
+            </ul>
+            <div class="icon menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <main>
+        <div class="text-justify">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="../img/logo.png" alt="Logo" width="100" height="100" class="text">
+                    </div>
+                    <div class="col-sm-8">
+                        <h1 class="shadyparagraphs">LocationWise-kickstarter</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>¿Qué es <strong>similaridad</strong>?</h2>
+                    <p>LocationWise proporciona una herramienta para ayudar a medir la similaridad de una Área
+                        Geoestadística básica
+                        (AGEB) con respecto a otra. La similaridad se mide en base a la cantidad de clientes que
+                        tienen características similares a los clientes de su negocio.
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>¿Cómo funciona?</h2>
+                    <p>Moviendo la barra de similaridad, puede encontrar los asentamientos que más se parecen de acuerdo
+                        a su AGEB, esto
+                        se basa en los siguientes criterios:
+                    <ul>
+                        <li>Edad</li>
+                        <li>Nivel de estudios</li>
+                        <li>Actividad económica</li>
+                        <li>Salario</li>
+                        <li>Población total</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>¿Ahora qué hago?</h2>
+                    <p>Después de encontrar su lugar de negocio ideal, pues no sé si quiere múdese o haga lo que quiera
+                        tampoco
+                        quiera que le resolvamos su vida
+                    </p>
+                </div>
+            </div>
+            <center><img src="../img/demostrativo1.png" alt="Demostración de LocationWise"></center>
+            <br>
+            <br>
+            <br>
+            <h2 class="fancyh2">Similaridad en base a las características seleccionadas:</h2>
+            <!--TODO: show table with 8 elements-->
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nivel socioeconómico</td>
+                            <td id="nivelsocioeconomico">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Rango de edad</td>
+                            <td id="edades">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Nivel de escolaridad actual</td>
+                            <td id="escolaridad">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Limitación</td>
+                            <td id="limitacion">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Situación económica</td>
+                            <td id="situacioneconomica">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Situación escolar final</td>
+                            <td id="situacionescolar">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Situación conyugal</td>
+                            <td id="situacionconyugal">${?}</td>
+                        </tr>
+                        <tr>
+                            <td>Religión</td>
+                            <td id="religion">${?}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <center>
+            <div class="slider-container">
+                <input type="range" class="slider" min="1" max="200" id="myRange">
+                <h3>Desplegar las <strong><span id="demo"></span></strong> zonas con mayores características
+                    proporcionadas</h3>
+                <button type="button" class="btn btn-success" id="displayZones">Desplegar zonas</button>
+            </div>
+        </center>
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+            <h1 class="fancyh2">AGEBS con mayor población seleccionada:</h1>
+            <br>
+            <div id="map" style="width: 140rem; height: 140rem; position: relative;"
+                class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">
+            </div>
+        </div>
+    </main>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="module" src="../js/inputCore.js"></script>
+</body>
+
+</html>

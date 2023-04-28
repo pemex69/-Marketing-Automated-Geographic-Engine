@@ -1,94 +1,10 @@
-let nivelsocioeconomico_dropdown = document.getElementById('nivelsocioeconomico');
-let edades_dropdown = document.getElementById('edades');
-let escolaridad_dropdown = document.getElementById('escolaridad');
-let sexo_dropdown = document.getElementById('sexo');
-let situacioneconomica_dropdown = document.getElementById('situacioneconomica');
-let situacionescolar_dropdown = document.getElementById('situacionescolar');
-let situacionconyugal_dropdown = document.getElementById('situacionconyugal');
-let religion_dropdown = document.getElementById('religion');
-let limitacion_dropdown = document.getElementById('limitacion');
+let agebInputs = [];
+export { agebInputs };
 
-let nivelsocioeconomico_selectedValue = '';
-let edades_selectedValue = '';
-let escolaridad_selectedValue = '';
-let sexo_selectedValue = '';
-let situacioneconomica_selectedValue = '';
-let situacionescolar_selectedValue = '';
-let situacionconyugal_selectedValue = '';
-let religion_selectedValue = '';
-let limitacion_selectedValue = '';
-
-
-nivelsocioeconomico_dropdown.addEventListener("change", function () {
-
-    selectedValue = nivelsocioeconomico_dropdown.value;
-    alert(selectedValue);
-
-});
-
-edades_dropdown.addEventListener("change", function () {
-
-    selectedValue = edades_dropdown.value;
-    alert(selectedValue);
-
-});
-
-escolaridad_dropdown.addEventListener("change", function () {
-
-    selectedValue = escolaridad_dropdown.value;
-    alert(selectedValue);
-
-});
-
-sexo_dropdown.addEventListener("change", function () {
-
-    selectedValue = sexo_dropdown.value;
-    alert(selectedValue);
-
-});
-
-situacioneconomica_dropdown.addEventListener("change", function () {
-
-    selectedValue = situacioneconomica_dropdown.value;
-    alert(selectedValue);
-
-});
-
-situacionescolar_dropdown.addEventListener("change", function () {
-
-    selectedValue = situacionescolar_dropdown.value;
-    alert(selectedValue);
-
-});
-
-situacionconyugal_dropdown.addEventListener("change", function () {
-
-    selectedValue = situacionconyugal_dropdown.value;
-    alert(selectedValue);
-
-});
-
-religion_dropdown.addEventListener("change", function () {
-
-    selectedValue = religion_dropdown.value;
-    alert(selectedValue);
-
-});
-
-limitacion_dropdown.addEventListener("change", function () {
-
-    selectedValue = limitacion_dropdown.value;
-    alert(selectedValue);
-
-});
-//                    <button class="glow-on-hover buttonfix" type="button" id="geolocateBtn">Geolocalizar</button>
-//add event listener to button
 document.getElementById('geolocateBtn').addEventListener('click', function () {
-    //swal confirming choices
     swal({
         title: "¿Estás seguro?",
-        //get the text from the dropdowns
-        text: "¿Estás seguro de tus elecciones?, se considerarán en el análisis",
+        text: "¿Estás seguro de tus elecciones?\nSe considerarán en el análisis",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -98,12 +14,217 @@ document.getElementById('geolocateBtn').addEventListener('click', function () {
                 let nivelsocioeconomico = document.getElementById('nivelsocioeconomico').value;
                 let edades = document.getElementById('edades').value;
                 let escolaridad = document.getElementById('escolaridad').value;
-                let sexo = document.getElementById('sexo').value;
                 let situacioneconomica = document.getElementById('situacioneconomica').value;
                 let situacionescolar = document.getElementById('situacionescolar').value;
                 let situacionconyugal = document.getElementById('situacionconyugal').value;
                 let religion = document.getElementById('religion').value;
                 let limitacion = document.getElementById('limitacion').value;
+                if (escolaridad == 'escolaridadNULL') {
+                    escolaridad = null;
+                }
+                if (situacioneconomica == 'situacioneconomicaNULL') {
+                    situacioneconomica = null;
+                }
+                if (situacionescolar == 'situacionescolarNULL') {
+                    situacionescolar = null;
+                }
+                if (situacionconyugal == 'situacionconyugalNULL') {
+                    situacionconyugal = null;
+                }
+                if (religion == 'religionNULL') {
+                    religion = null;
+                }
+                if (limitacion == 'limitacionNULL') {
+                    limitacion = null;
+                }
+                if (nivelsocioeconomico == 'lw_economia_ab') {
+                    nivelsocioeconomico = 'A%2FB';
+                }
+                if (nivelsocioeconomico == 'lw_economia_cp') {
+                    nivelsocioeconomico = 'C+';
+                }
+                if (nivelsocioeconomico == 'lw_economia_c') {
+                    nivelsocioeconomico = 'C';
+                }
+                if (nivelsocioeconomico == 'lw_economia_c') {
+                    nivelsocioeconomico = 'C-';
+                }
+                if (nivelsocioeconomico == 'lw_economia_dp') {
+                    nivelsocioeconomico = 'D+';
+                }
+                if (nivelsocioeconomico == 'lw_economia_d') {
+                    nivelsocioeconomico = 'D';
+                }
+                if (nivelsocioeconomico == 'lw_economia_e') {
+                    nivelsocioeconomico = 'E';
+                }
+
+                let url = 'http://localhost:3000/locationwise/v1/customers-inputs/customers-cvegeos/' + nivelsocioeconomico + '/' + edades + '/' + escolaridad + '/' + situacioneconomica + '/' + situacionescolar + '/' + situacionconyugal + '/' + religion + '/' + limitacion + '/';
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.clear();
+                        localStorage.setItem('InputsData', JSON.stringify(data));
+                        localStorage.setItem('NivelSocioeconomico', nivelsocioeconomico);
+                        localStorage.setItem('Edades', edades);
+                        if (escolaridad == null) {
+                            localStorage.setItem('Escolaridad', 'null');
+                        }
+                        else {
+                            localStorage.setItem('Escolaridad', escolaridad);
+                        }
+                        if (situacioneconomica == null) {
+                            localStorage.setItem('SituacionEconomica', 'null');
+                        }
+                        else {
+                            localStorage.setItem('SituacionEconomica', situacioneconomica);
+                        }
+                        if (situacionescolar == null) {
+                            localStorage.setItem('SituacionEscolar', 'null');
+                        }
+                        else {
+                            localStorage.setItem('SituacionEscolar', situacionescolar);
+                        }
+                        if (situacionconyugal == null) {
+                            localStorage.setItem('SituacionConyugal', 'null');
+                        }
+                        else {
+                            localStorage.setItem('SituacionConyugal', situacionconyugal);
+                        }
+                        if (religion == null) {
+                            localStorage.setItem('Religion', 'null');
+                        }
+                        else {
+                            localStorage.setItem('Religion', religion);
+                        }
+                        if (limitacion == null) {
+                            localStorage.setItem('Limitacion', 'null');
+                        }
+                        else {
+                            localStorage.setItem('Limitacion', limitacion);
+                        }
+
+                        window.location.href = './input_geolocation.html';
+
+                    }).catch(err => {
+                        swal("Error", "Hubo un error.", "error");
+                        console.log(err);
+                    });
+            }
+        });
+});
+
+document.getElementById('geolocateDensityBtn').addEventListener('click', function () {
+    swal({
+        title: "¿Estás seguro?",
+        text: "¿Estás seguro de tus elecciones?\nSe considerarán en el análisis por densidad",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                let nivelsocioeconomico = document.getElementById('nivelsocioeconomico').value;
+                let edades = document.getElementById('edades').value;
+                let escolaridad = document.getElementById('escolaridad').value;
+                let situacioneconomica = document.getElementById('situacioneconomica').value;
+                let situacionescolar = document.getElementById('situacionescolar').value;
+                let situacionconyugal = document.getElementById('situacionconyugal').value;
+                let religion = document.getElementById('religion').value;
+                let limitacion = document.getElementById('limitacion').value;
+                if (escolaridad == 'escolaridadNULL') {
+                    escolaridad = null;
+                }
+                if (situacioneconomica == 'situacioneconomicaNULL') {
+                    situacioneconomica = null;
+                }
+                if (situacionescolar == 'situacionescolarNULL') {
+                    situacionescolar = null;
+                }
+                if (situacionconyugal == 'situacionconyugalNULL') {
+                    situacionconyugal = null;
+                }
+                if (religion == 'religionNULL') {
+                    religion = null;
+                }
+                if (limitacion == 'limitacionNULL') {
+                    limitacion = null;
+                }
+                if (nivelsocioeconomico == 'lw_economia_ab') {
+                    nivelsocioeconomico = 'A%2FB';
+                }
+                if (nivelsocioeconomico == 'lw_economia_cp') {
+                    nivelsocioeconomico = 'C+';
+                }
+                if (nivelsocioeconomico == 'lw_economia_c') {
+                    nivelsocioeconomico = 'C';
+                }
+                if (nivelsocioeconomico == 'lw_economia_c') {
+                    nivelsocioeconomico = 'C-';
+                }
+                if (nivelsocioeconomico == 'lw_economia_dp') {
+                    nivelsocioeconomico = 'D+';
+                }
+                if (nivelsocioeconomico == 'lw_economia_d') {
+                    nivelsocioeconomico = 'D';
+                }
+                if (nivelsocioeconomico == 'lw_economia_e') {
+                    nivelsocioeconomico = 'E';
+                }
+
+                let url = 'http://localhost:3000/locationwise/v1/customers-inputs/customers-cvegeos-density/' + nivelsocioeconomico + '/' + edades + '/' + escolaridad + '/' + situacioneconomica + '/' + situacionescolar + '/' + situacionconyugal + '/' + religion + '/' + limitacion + '/';
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.clear();
+                        localStorage.setItem('InputsData', JSON.stringify(data));
+                        localStorage.setItem('NivelSocioeconomico', nivelsocioeconomico);
+                        localStorage.setItem('Edades', edades);
+                        if (escolaridad == null) {
+                            localStorage.setItem('Escolaridad', 'null');
+                        }
+                        else {
+                            localStorage.setItem('Escolaridad', escolaridad);
+                        }
+                        if (situacioneconomica == null) {
+                            localStorage.setItem('SituacionEconomica', 'null');
+                        }
+                        else {
+                            localStorage.setItem('SituacionEconomica', situacioneconomica);
+                        }
+                        if (situacionescolar == null) {
+                            localStorage.setItem('SituacionEscolar', 'null');
+                        }
+                        else {
+                            localStorage.setItem('SituacionEscolar', situacionescolar);
+                        }
+                        if (situacionconyugal == null) {
+                            localStorage.setItem('SituacionConyugal', 'null');
+                        }
+                        else {
+                            localStorage.setItem('SituacionConyugal', situacionconyugal);
+                        }
+                        if (religion == null) {
+                            localStorage.setItem('Religion', 'null');
+                        }
+                        else {
+                            localStorage.setItem('Religion', religion);
+                        }
+                        if (limitacion == null) {
+                            localStorage.setItem('Limitacion', 'null');
+                        }
+                        else {
+                            localStorage.setItem('Limitacion', limitacion);
+                        }
+
+                        window.location.href = './input_geolocation.html';
+
+                    }).catch(err => {
+                        swal("Error", "Hubo un error.", "error");
+                        console.log(err);
+                    });
             }
         });
 });
