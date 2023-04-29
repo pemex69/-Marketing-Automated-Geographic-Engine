@@ -263,32 +263,33 @@ function loadAGEBS(displays) {
                                                     let coreEdadesElement = document.getElementById('coreEdades');
                                                     coreEdadesElement.innerHTML = coreEdades;
 
-                                                    if (Escolaridad != 'null') {
+                                                    if (Escolaridad != 'No se toma en cuenta') {
+                                                        alert(Escolaridad);
                                                         let coreEscolaridad = data[0][Escolaridad];
                                                         let coreEscolaridadElement = document.getElementById('coreEscolaridad');
                                                         coreEscolaridadElement.innerHTML = coreEscolaridad;
                                                     }
-                                                    if (SituacionEconomica != 'null') {
+                                                    if (SituacionEconomica != 'No se toma en cuenta') {
                                                         let coreSituacionEconomica = data[0][SituacionEconomica];
                                                         let coreSituacionEconomicaElement = document.getElementById('coreSituacionEconomica');
                                                         coreSituacionEconomicaElement.innerHTML = coreSituacionEconomica;
                                                     }
-                                                    if (SituacionEscolar != 'null') {
+                                                    if (SituacionEscolar != 'No se toma en cuenta') {
                                                         let coreSituacionEscolar = data[0][SituacionEscolar];
                                                         let coreSituacionEscolarElement = document.getElementById('coreSituacionEscolar');
                                                         coreSituacionEscolarElement.innerHTML = coreSituacionEscolar;
                                                     }
-                                                    if (SituacionConyugal != 'null') {
+                                                    if (SituacionConyugal != 'No se toma en cuenta') {
                                                         let coreSituacionConyugal = data[0][SituacionConyugal];
                                                         let coreSituacionConyugalElement = document.getElementById('coreSituacionConyugal');
                                                         coreSituacionConyugalElement.innerHTML = coreSituacionConyugal;
                                                     }
-                                                    if (Religion != 'null') {
+                                                    if (Religion != 'No se toma en cuenta') {
                                                         let coreReligion = data[0][Religion];
                                                         let coreReligionElement = document.getElementById('coreReligion');
                                                         coreReligionElement.innerHTML = coreReligion;
                                                     }
-                                                    if (Limitaciones != 'null') {
+                                                    if (Limitaciones != 'No se toma en cuenta') {
                                                         let coreLimitaciones = data[0][Limitaciones];
                                                         let coreLimitacionesElement = document.getElementById('coreLimitaciones');
                                                         coreLimitacionesElement.innerHTML = coreLimitaciones;
