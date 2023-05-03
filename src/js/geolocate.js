@@ -1,4 +1,7 @@
 import { selected_cvegeo } from './maps.js';
+import { resultText } from './maps.js';
+
+
 
 function geolocate(cvegeo) {
     if (cvegeo == '' || cvegeo == undefined) {
@@ -7,7 +10,7 @@ function geolocate(cvegeo) {
     else {
         swal({
             title: '¿Estás seguro?',
-            text: 'Has seleccionado el AGEB: ' + cvegeo + '. Si continúas, se te redirigirá a la página resultado.',
+            text: 'Has seleccionado el lugar: ' + resultText + '. Si continúas, se te redirigirá a la página resultado.',
             icon: 'warning',
             buttons: {
                 cancel: 'Cancelar',
@@ -18,6 +21,7 @@ function geolocate(cvegeo) {
                 window.location.href = './geolocation.html';
                 localStorage.clear();
                 localStorage.setItem("cvegeo", selected_cvegeo);
+                localStorage.setItem("resultText", resultText);
             }
         }
         );

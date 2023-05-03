@@ -1,17 +1,19 @@
 //valid query eg SELECT * FROM "Consults_schema"."AGEB DATA CDMX" WHERE pobtot BETWEEN 3505.44 AND 6958.5599999999995 AND lw_economiapred = 'D' AND graproes BETWEEN 7.684900000000001 AND 15.2551 AND lw_edprom BETWEEN 24.503149847094814 AND 48.640581039755375
 
 let cvegeo = '';
+let resultText = '';
 let similarityPercent = 0;
 let agebData = [];
 import { mapa_agebs } from "./maps.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     cvegeo = localStorage.getItem("cvegeo");
+    resultText = localStorage.getItem("resultText");
     if (cvegeo != null && cvegeo != undefined) {
         const agebAns = document.getElementById('agebAns');
-        agebAns.innerHTML = cvegeo;
+        agebAns.innerHTML = resultText;
         const agebspan = document.getElementById('agebspan');
-        agebspan.innerHTML = cvegeo;
+        agebspan.innerHTML = resultText;
 
         let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + cvegeo;
         fetch(cvegeoAPI)

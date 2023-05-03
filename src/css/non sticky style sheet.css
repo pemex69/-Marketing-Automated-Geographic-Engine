@@ -36,6 +36,10 @@
   color: #7f8c8d;
 }
 
+p {
+  font-size: 2rem;
+}
+
 .betterlabels {
   font-family: 'Dosis', sans-serif;
   font-family: 'League Spartan', sans-serif;
