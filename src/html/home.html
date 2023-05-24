@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Encuentra el lugar perfecto para tu negocio con Locationwise</title>
+  <script src="../../node_modules/js-cookie/dist/js.cookie.min.js"></script>
+  <script src="../js/jwt validation.js"></script>
   <link rel="shortcut icon" href="../img/mageico.ico" type="image/x-icon">
   <script class="anchorjs"></script>
   <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -46,36 +48,45 @@
   </nav>
 </header>
 <br><br><br><br><br>
+
 <body>
   <main>
-    <center>  
+    <center>
       <div class="alert alert-success sen">
         <strong>Usuario Registrado!</strong> Gracias por tu confianza en nuestras soluciones ${username}.
       </div>
     </center>
-      <center>
+    <center>
       <h1>¿No sabes <strong>dónde</strong> poner tu negocio?</h1>
       <h2>Encuentra ese lugar en menos de 5 minutos</h2>
       <br><br>
     </center>
     <div class="container">
-      <h1><a href="./locwise.html">Location-Wise</a>, una de nuestras soluciones. <span class="button-- btn-danger"> SOLAMENTE CDMX</span></h1> <!--Actualmente la única xD-->
+      <h1><a href="./locwise.html">Location-Wise</a>, una de nuestras soluciones. <span class="button-- btn-danger">
+          SOLAMENTE CDMX</span></h1> <!--Actualmente la única xD-->
       <h4>Dirigido a microempresas y nuevos emprendedores</h4>
       <div class="row">
         <div class="col-sm-4">
           <h3>¿Qué es Location-Wise?</h3>
-          <p>Location-Wise es una solución geográfica que te ayuda a localizar tu negocio mediante el uso de mapas y datos geoestadísticos.</p>
+          <p>Location-Wise es una solución geográfica que te ayuda a localizar tu negocio mediante el uso de mapas y
+            datos geoestadísticos.</p>
 
         </div>
         <div class="col-sm-4">
           <h3>¿Cómo funciona?</h3>
-          <p>Location-Wise recopila la información de una área geográfica gracias a los <a href="https://www.inegi.org.mx/datosabiertos/">datos abiertos del INEGI</a>, resume los datos más relevantes de un área geoestadística básica <a href="https://www.coneval.org.mx/Medicion/IRS/Paginas/Rezago_social_AGEB_2010.aspx">(AGEB)</a>
-          para tú negocio y en base a eso te despliega en un mapa el AGEB con mayor probabilidad de clientes potenciales o bien con el mayor número de clientes similares a los que ya tienes.</p>
+          <p>Location-Wise recopila la información de una área geográfica gracias a los <a
+              href="https://www.inegi.org.mx/datosabiertos/">datos abiertos del INEGI</a>, resume los datos más
+            relevantes de un área geoestadística básica <a
+              href="https://www.coneval.org.mx/Medicion/IRS/Paginas/Rezago_social_AGEB_2010.aspx">(AGEB)</a>
+            para tú negocio y en base a eso te despliega en un mapa el AGEB con mayor probabilidad de clientes
+            potenciales o bien con el mayor número de clientes similares a los que ya tienes.</p>
         </div>
         <div class="col-sm-4">
           <h3>¿Cómo puedo usarlo?</h3>
-          <p>Para usar Location-Wise basta con ingresar datos de tú publico objetivo si es que no cuentas con un negocio actualmente, o bien ingresar en un mapa la localización de tu negocio actual
-            para que Location-Wise te muestre el AGEB en un mapa interactivo con mayor probabilidad de clientes potenciales o bien con el mayor número de clientes similares a los que ya tienes.
+          <p>Para usar Location-Wise basta con ingresar datos de tú publico objetivo si es que no cuentas con un negocio
+            actualmente, o bien ingresar en un mapa la localización de tu negocio actual
+            para que Location-Wise te muestre el AGEB en un mapa interactivo con mayor probabilidad de clientes
+            potenciales o bien con el mayor número de clientes similares a los que ya tienes.
           </p>
         </div>
       </div>
@@ -112,7 +123,6 @@
       this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
     }
   </script>
-  <img src="../img/demostrativo1.png" alt="">
   <footer>
     <p>LocationWise® 2023</p>
   </footer>

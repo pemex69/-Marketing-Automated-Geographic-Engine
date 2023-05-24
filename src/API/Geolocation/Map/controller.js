@@ -1,5 +1,5 @@
 const { response } = require('express');
-const pool = require('../../../../magedb');
+const pool = require('../../magedb');
 const queries = require('./queries');
 
 const GetAllSettlements = async (req, res) => {

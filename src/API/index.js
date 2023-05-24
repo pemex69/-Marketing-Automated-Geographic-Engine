@@ -8,71 +8,29 @@ const authRoutes = require('./Users/Auth/routes');
 const geolocationRoutes = require('./Geolocation/Map/routes');
 const customersInputsRoutes = require('./Geolocation/Inputs/routes');
 const port = 3000;
-
 const app = express();
+const origin = 'http://127.0.0.1:5501';
 
-app.use(cors());
+app.use(cors({
+    origin: origin,
+    credentials: true
+}));
 app.use(express.json());
 app.use(compression());
 app.use(cookieParser());
-app.use(express.json({ extended: true }));
-
-
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
 
-app.get('/locationwise/setUserCookie', (req, res) => {
-    res.cookie('nombre de cookie', 'cookie value', {
-        maxAge: 1000 * 10,
-        httpOnly: true,
-        secure: true,
-        sameSite: 'lax',
-    });
-    res.send('cookie set');
-});
-
-app.get('/locationwise/getUserCookie', (req, res) => {
-    res.send('leyendo cookies . . .');
-    console.log(req.cookies);
-});
-
-app.get('/locationwise/deleteUserCookie', (req, res) => {
-    res.clearCookie('nombre de cookie');
-    res.send('cookie borrada');
-});
-
-app.get('/', (req, res) => {
-    res.send('soo');
-});
-
-
-app.post('/locationwise/v1/token', (req, res) => {
-    // Get user from database
-
-    const token = null
-    res.send({ token })
-});
-
-app.get('/locationwise/v1/public', (req, res) => {
-    res.send('publico');
-});
-
-app.get('/locationwise/v1/private', (req, res) => {
-    try {
-        res.send('privado');
-    } catch (error) {
-        res.send(401).send('no autorizado');
-    }
-});
-
 app.use(express.static('public'));
 app.use('/locationwise/v1/users', usersRoutes);
+app.use('/locationwise/v1/auth', authRoutes);
 app.use('/locationwise/v1/geocode-settlement', geolocationRoutes);
 app.use('/locationwise/v1/customers-inputs', customersInputsRoutes);
 
 app.listen(port, () =>
-    console.log(`App escuchando en puerto ${port} . . .`));
+    console.log(`App listening on port: ${port} . .  .`));

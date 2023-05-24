@@ -1,5 +1,5 @@
 const { response } = require('express');
-const pool = require('../../../../magedb');
+const pool = require('../../magedb');
 const queries = require('./queries');
 
 const getAllUsers = (req, res) => {
@@ -19,14 +19,13 @@ const getUserByID = (req, res) => {
 
 const AddUser = (req, res) => {
     const { usr_username, usr_email, usr_pass } = req.body;
-    //Check if email already exists
+    console.log(usr_username, usr_email, usr_pass);
     pool.query(queries.checkEmailExists, [usr_email], (error, results) => {
         if (error) throw error;
         if (results.rows.length) {
             res.send('Ese email ya existe.');
         }
         else {
-            //If the email does not exitsts, adds the user to the database
             pool.query(queries.addUser, [usr_username, usr_email, usr_pass], (error, results) => {
                 if (error) throw error;
                 res.status(201).send('Nuevo usuario agregado exitosamente.');
@@ -34,6 +33,7 @@ const AddUser = (req, res) => {
         }
     });
 };
+
 
 const deleteUserByID = (req, res) => {
     const usr_id = parseInt(req.params.usr_id);

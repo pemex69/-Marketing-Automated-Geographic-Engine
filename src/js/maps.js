@@ -3,6 +3,7 @@
 //GeolocationAPI (gets all agebs geojson cdmx) = 'http://localhost:3000/locationwise/v1/geocode-settlement/'
 //CVEGEOAPI (gets the ageb given a cvegeo) = 'http://localhost:3000/locationwise/v1/geocode-settlement/:cvegeo'
 //wkx path: '../../node_modules/wkx/dist/wkx.js'
+
 let selected_cvegeo = '';
 export { selected_cvegeo };
 

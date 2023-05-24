@@ -1,6 +1,6 @@
 const { response } = require('express');
 const { Pool } = require('pg');
-const pool = require('../../../../magedb');
+const pool = require('../../magedb');
 
 
 const getSettlementByInputs = async (req, res) => {

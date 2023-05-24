@@ -1,4 +1,5 @@
 import { mapa_agebs } from "./input maps.js";
+
 let InputsData = []
 let displays = 0;
 let cvegeos = [];

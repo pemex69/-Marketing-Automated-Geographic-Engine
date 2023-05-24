@@ -1,8 +1,6 @@
 import { selected_cvegeo } from './maps.js';
 import { resultText } from './maps.js';
 
-
-
 function geolocate(cvegeo) {
     if (cvegeo == '' || cvegeo == undefined) {
         swal("Sin datos", "Debes seleccionar un AGEB para poder realizar esta acción", "info");

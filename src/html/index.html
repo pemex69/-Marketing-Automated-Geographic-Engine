@@ -55,20 +55,20 @@
   <main>
     <center>
       <h1>¿No sabes <strong>dónde</strong> poner tu negocio?</h1>
-      <h2 class="shadyparagraphs">Encuentra ese lugar en menos de 5 minutos</h2>
+      <h2 class="shadyparagraphs">Encuentra ese lugar en menos de 15 minutos</h2>
     </center>
     <div class="container">
       <h1><span style="color: var(--bs-blue);">Location-Wise</span>, una de nuestras soluciones. <span
           class="button-- btn-danger"> SOLAMENTE CDMX</span></h1> <!--Actualmente la única xD-->
       <h4>Dirigido a microempresas y nuevos emprendedores</h4>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <h3>¿Qué es Location-Wise?</h3>
           <p>Location-Wise es una solución geográfica que te ayuda a localizar tu negocio mediante el uso de mapas y
             datos geoestadísticos.</p>
 
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <h3>¿Cómo funciona?</h3>
           <p>Location-Wise recopila la información de una área geográfica gracias a los <a
               href="https://www.inegi.org.mx/datosabiertos/">datos abiertos del INEGI</a>, resume los datos más
@@ -77,28 +77,25 @@
             para tú negocio y en base a eso te despliega en un mapa el AGEB con mayor probabilidad de clientes
             potenciales o bien con el mayor número de clientes similares a los que ya tienes.</p>
         </div>
-        <div class="col-sm-4">
-          <h3>¿Cómo puedo usarlo?</h3>
-          <p>Para usar Location-Wise basta con ingresar datos de tú publico objetivo si es que no cuentas con un negocio
-            actualmente, o bien ingresar en un mapa la localización de tu negocio actual
-            para que Location-Wise te muestre el AGEB en un mapa interactivo con mayor probabilidad de clientes
-            potenciales o bien con el mayor número de clientes similares a los que ya tienes.
-          </p>
-        </div>
       </div>
-    </div>
+      <h3>¿Cómo puedo usarlo?</h3>
+      <p>Para usar Location-Wise basta con ingresar datos de tú publico objetivo si es que no cuentas con un negocio
+        actualmente, o bien ingresar en un mapa la localización de tu negocio actual
+        para que Location-Wise te muestre el AGEB en un mapa interactivo con mayor probabilidad de clientes
+        potenciales o bien con el mayor número de clientes similares a los que ya tienes.
+      </p>
+      </div>
     <br><br>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <center>
-            <a href="./solutions.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Conoce
+            <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onclick="NotRegistered()">Conoce
               nuestras soluciones</a>
           </center>
         </div>
       </div>
       <br>
-      <center><a href="./index.html">Regresa al landing . . .</a></center>
   </main>
   <script>
     const body = document.querySelector("body");
@@ -119,9 +116,11 @@
       this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
     }
   </script>
-  <img src="../img/demostrativo1.png" alt="">
+  <br>
   <footer>
-    <p>LocationWise® 2023</p>
+    <div class="container">
+      <p>Location-Wise® 2023 - Marketing Automated Geographic Engine</p>
+    </div>
   </footer>
 </body>
 
