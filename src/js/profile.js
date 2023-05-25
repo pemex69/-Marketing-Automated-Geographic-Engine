@@ -107,6 +107,37 @@ function updateAccount() {
     const formUsername = document.getElementById('username0').value;
     const formEmail = document.getElementById('email').value;
     const formPass = document.getElementById('pass').value;
+
+    if (username.length < 3 || username.length > 14) {
+        swal({
+            title: "Error",
+            text: "El nombre de usuario debe tener entre 3 y 14 caracteres.",
+            icon: "error",
+            button: "Nimodo",
+        });
+        return;
+    }
+    let emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(formEmail)) {
+        swal({
+            title: "Error",
+            text: "El email no es valido.",
+            icon: "error",
+            button: "Nimodo",
+        });
+        return;
+    }
+    if (formPass.length < 3 || formPass.length > 14) {
+        swal({
+            title: "Error",
+            text: "La contraseña debe tener entre 3 y 14 caracteres.",
+            icon: "error",
+            button: "Nimodo",
+        });
+        return;
+    }
+
+
     if (formUsername === username && formEmail === email && formPass === pass) {
         swal({
             title: "Nada que cambiar",

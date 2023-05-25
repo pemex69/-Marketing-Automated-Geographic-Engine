@@ -53,6 +53,25 @@ const authBtn = document.getElementById('authBtn');
 authBtn.addEventListener('click', function () {
     const email = document.getElementById('emailLogin').value;
     const pass = document.getElementById('passLogin').value;
+    let emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(email)) {
+        swal({
+            title: "Error",
+            text: "El email no es valido.",
+            icon: "error",
+            button: "Nimodo",
+        });
+        return;
+    }
+    if (password.length < 3 || password.length > 14) {
+        swal({
+            title: "Error",
+            text: "La contraseña debe tener entre 3 y 14 caracteres.",
+            icon: "error",
+            button: "Nimodo",
+        });
+        return;
+    }
     authLogin(email, pass);
 });
 

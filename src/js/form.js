@@ -28,7 +28,30 @@ function checkProtectedRoute() {
                                     console.log(res);
                                     username = res[0].usr_username;
                                     email = res[0].usr_email;
+                                    let emailRegex = /\S+@\S+\.\S+/;
+                                    if (!emailRegex.test(email)) {
+                                        swal({
+                                            title: 'Error',
+                                            text: 'El email no es valido.',
+                                            icon: 'error',
+                                            button: 'Nimodo'
+                                        });
+                                        swal('Error', 'El email no es valido.', 'error');
+                                        throw new Error('Email no valido');
+                                    }
+                                    if (username === null || username === undefined || username === '') {
+                                        swal({
+                                            title: 'Error',
+                                            text: 'El usuario no existe.',
+                                            icon: 'error',
+                                            button: 'Nimodo'
+                                        });
+                                        swal('Error', 'El email no es valido.', 'error');
+                                        throw new Error('El usuario no existe');
+                                    }
+
                                     document.getElementById('contact_name').value = username;
+
                                     document.getElementById('contact_email').value = email;
                                 });
                             } else {
