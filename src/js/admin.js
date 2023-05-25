@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const allUsers = document.getElementById('allUsers');
+    const deleteUserButton = document.getElementById('deleteUser');
+    const addAdmin = document.getElementById('addAdmin');
+
     allUsers.addEventListener('click', getAllUsers);
+    deleteUserButton.addEventListener('click', handleDeleteUser);
+    addAdmin.addEventListener('click', addAdminUser);
 });
 
 function getAllUsers() {
@@ -25,6 +30,119 @@ contraseña (hash): ${user.usr_pass}\n\n\n`;
                 button: 'Ok'
             });
 
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+function handleDeleteUser() {
+    const userKey = document.getElementById('userKey').value;
+    const numbers = /^[0-9]+$/;
+    if (userKey.match(numbers)) {
+        deleteUserByID(userKey);
+    } else {
+        deleteUserByEmail(userKey);
+    }
+}
+
+function deleteUserByID(id) {
+    usr_id = parseInt(id);
+    const deleteUser = `http://localhost:3000/locationwise/v1/users/delete/${usr_id}`;
+    fetch(deleteUser, {
+        method: 'DELETE'
+    })
+        .then(response => {
+            if (response.status === 200) {
+                swal({
+                    title: 'Usuario eliminado',
+                    text: 'El usuario fue eliminado exitosamente.',
+                    icon: 'success',
+                    button: 'Ok'
+                });
+            } else if (response.status === 404) {
+                swal({
+                    title: 'Error',
+                    text: 'No existe el usuario.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            } else {
+                swal({
+                    title: 'Error',
+                    text: 'Hubo un error al eliminar el usuario.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+function deleteUserByEmail(email) {
+    usr_email = email;
+    const deleteUserByEmailAPI = `http://localhost:3000/locationwise/v1/users/delete/mail/${usr_email}`;
+    fetch(deleteUserByEmailAPI, {
+        method: 'DELETE'
+    })
+        .then(response => {
+            if (response.status === 200) {
+                swal({
+                    title: 'Usuario eliminado',
+                    text: 'El usuario fue eliminado exitosamente.',
+                    icon: 'success',
+                    button: 'Ok'
+                });
+            } else if (response.status === 404) {
+                swal({
+                    title: 'Error',
+                    text: 'No existe el usuario.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            } else {
+                swal({
+                    title: 'Error',
+                    text: 'Hubo un error al eliminar el usuario.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+function addAdminUser() {
+    const usr_email = document.getElementById('adminEmail').value;
+    const addAdminAPI = `http://localhost:3000/locationwise/v1/users/admin/${usr_email}`;
+    fetch(addAdminAPI, {
+        method: 'POST'
+    })
+        .then(response => {
+            if (response.status === 200) {
+                swal({
+                    title: 'Administrador agregado',
+                    text: 'El administrador fue agregado exitosamente.',
+                    icon: 'success',
+                    button: 'Ok'
+                });
+            } else if (response.status === 404) {
+                swal({
+                    title: 'Error',
+                    text: 'No existe el usuario.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            } else {
+                swal({
+                    title: 'Error',
+                    text: 'Hubo un error al agregar el usuario.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            }
         })
         .catch(error => {
             console.log(error);

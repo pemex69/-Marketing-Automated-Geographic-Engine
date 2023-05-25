@@ -11,7 +11,7 @@ function checkProtectedRoute() {
     })
         .then(response => {
             if (response.ok) {
-                window.history.back();
+                window.location.href = './home.html';
             } else {
                 window.location.href = '#';
                 throw new Error('JWT no validado');

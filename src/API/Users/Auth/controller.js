@@ -60,8 +60,20 @@ const verifyToken = (req, res, next) => {
     }
 };
 
+const verifyAdmin = (req, res, next) => {
+    const { adm_email } = req.params;
+    pool.query(queries.checkAdminEmailExists, [adm_email], (error, results) => {
+        if (error) throw error;
+        if (!results.rows.length) {
+            res.status(404).send('No existe el usuario o no tiene permiso.');
+        } else {
+            res.status(200).send(`Admin verificado.`);
+        }
+    });
+};
 
 module.exports = {
     validateUser,
-    verifyToken
+    verifyToken,
+    verifyAdmin
 };

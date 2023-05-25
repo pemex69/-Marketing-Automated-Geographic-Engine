@@ -41,21 +41,36 @@ const AddUser = (req, res) => {
     });
 };
 
-
-
 const deleteUserByID = (req, res) => {
     const usr_id = parseInt(req.params.usr_id);
     pool.query(queries.getUserByID, [usr_id], (error, results) => {
         if (error) throw error;
         //Checks the users existence
         if (!results.rows.length) {
-            res.send('No existe el usuario.');
+            res.status(404).send('No existe el usuario.');
         }
         else {
             pool.query(queries.deleteUserByID, [usr_id], (error, results) => {
                 if (error) throw error;
                 res.clearCookie('authToken');
                 res.status(200).send(`Usuario con ID ${usr_id} eliminado exitosamente.`);
+            });
+        }
+    });
+};
+
+const deleteUserByEmail = (req, res) => {
+    const usr_email = req.params.usr_email;
+    pool.query(queries.checkEmailExists, [usr_email], (error, results) => {
+        if (error) throw error;
+        if (!results.rows.length) {
+            res.status(404).send('No existe el usuario.');
+        }
+        else {
+            pool.query(queries.deleteUserByEmail, [usr_email], (error, results) => {
+                if (error) throw error;
+                res.clearCookie('authToken');
+                res.status(200).send(`Usuario con email ${usr_email} eliminado exitosamente.`);
             });
         }
     });
@@ -79,11 +94,28 @@ const updateUserByID = (req, res) => {
     });
 };
 
+const addAdmin = (req, res) => {
+    const usr_email = req.params.usr_email;
+    pool.query(queries.checkEmailExists, [usr_email], (error, results) => {
+        if (error) throw error;
+        if (!results.rows.length) {
+            res.status(404).send('No existe el usuario.');
+        }
+        else {
+            pool.query(queries.addAdmin, [usr_email], (error, results) => {
+                if (error) throw error;
+                res.status(200).send(`Usuario con email ${usr_email} ahora es administrador.`);
+            });
+        }
+    });
+};
 
 module.exports = {
     getAllUsers,
     getUserByID,
     AddUser,
     deleteUserByID,
-    updateUserByID
+    deleteUserByEmail,
+    updateUserByID,
+    addAdmin
 };

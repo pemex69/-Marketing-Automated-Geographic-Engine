@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Encuentra el lugar perfecto para tu negocio con Locationwise</title>
-    <script src="../js/login JWT.js"></script>
+    <script src="../js/admin JWT.js"></script>
     <script src="../../node_modules/js-cookie/dist/js.cookie.min.js"></script>
     <link rel="shortcut icon" href="../img/mageico.ico" type="image/x-icon">
     <script class="anchorjs"></script>
@@ -40,7 +40,7 @@
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./solutions.html">Soluciones</a></li>
                 <li><a href="./profile.html">Perfil</a></li>
-                <li><a href="./contact.html">Contactanos</a></li>
+                <li><a href="./contact.html">Contáctanos</a></li>
             </ul>
             <div class="icon menu-btn">
                 <i class="fas fa-bars"></i>
@@ -65,7 +65,7 @@
                 <div class="col-sm-6">
                     <h2>Agregar administrador</h2>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="email => admin">
+                        <input type="email" class="form-control" placeholder="email => admin" id="adminEmail">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button" id="addAdmin">Agregar</button>
                         </div>
@@ -74,7 +74,7 @@
                 <div class="col-sm-6">
                     <h2>Borrar Usuarios</h2>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="email o id">
+                        <input type="email" class="form-control" placeholder="email o id" id="userKey">
                         <div class="input-group-append">
                             <button class="btn btn-danger" type="button" id="deleteUser">Borrar</button>
                             <button class="btn btn-info" id="allUsers">Listar Usuarios</button>
