@@ -1,4 +1,8 @@
 let userId = '';
+let username = '';
+let email = '';
+let pass = '';
+
 window.addEventListener('load', checkProtectedRoute);
 
 function checkProtectedRoute() {
@@ -23,10 +27,14 @@ function checkProtectedRoute() {
                             if (response.ok) {
                                 response.json().then(res => {
                                     console.log(res);
-                                    document.getElementById('username').innerHTML = res[0].usr_username;
-                                    document.getElementById('username0').innerHTML = res[0].usr_username;
-                                    document.getElementById('email').innerHTML = res[0].usr_email;
-                                    document.getElementById('pass').innerHTML = res[0].usr_pass;
+                                    username = res[0].usr_username;
+                                    email = res[0].usr_email;
+                                    pass = '. . .';
+
+                                    document.getElementById('username').innerHTML = username;
+                                    document.getElementById('username0').value = username;
+                                    document.getElementById('email').value = email;
+                                    document.getElementById('pass').value = pass;
                                 });
                             } else {
                                 throw new Error('Something went wrong');
@@ -48,8 +56,12 @@ function checkProtectedRoute() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const deleteAccBtn = document.getElementById('deleteAcc');
+    const updateAccBtn = document.getElementById('updateAcc');
     deleteAccBtn.addEventListener('click', () => {
         deleteAccount();
+    });
+    updateAccBtn.addEventListener('click', () => {
+        updateAccount();
     });
 });
 
@@ -76,7 +88,7 @@ function deleteAccount() {
                                 text: "¡Gracias por usar LocationWise!",
                                 icon: "success",
                             }).then(function () {
-                                window.location.href = "http://localhost:3000/locationwise/v1/auth/login";
+                                window.location.href = "./index.html";
                             });
                         } else {
                             throw new Error('Something went wrong');
@@ -89,4 +101,60 @@ function deleteAccount() {
                 swal("Tu cuenta está a salvo.");
             }
         });
+}
+
+function updateAccount() {
+    const formUsername = document.getElementById('username0').value;
+    const formEmail = document.getElementById('email').value;
+    const formPass = document.getElementById('pass').value;
+    if (formUsername === username && formEmail === email && formPass === pass) {
+        swal({
+            title: "Nada que cambiar",
+            text: "No has realizado ningún cambio. . .",
+            icon: "info",
+        });
+    } else {
+        swal({
+            title: "¿Estás seguro?",
+            text: "Se actualizarán tus datos.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willUpdate) => {
+                if (willUpdate) {
+                    const updateUser = 'http://localhost:3000/locationwise/v1/users/update/' + userId;
+                    const data = {
+                        usr_username: formUsername,
+                        usr_email: formEmail,
+                        usr_pass: formPass
+                    };
+                    fetch(updateUser, {
+                        method: 'PUT',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(response);
+                                swal({
+                                    title: "¡Tus datos han sido actualizados!",
+                                    text: "¡Gracias por usar LocationWise!",
+                                    icon: "success",
+                                }).then(function () {
+                                    window.location.href = "./profile.html";
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                } else {
+                    swal("No se actualizarán tus datos.");
+                }
+            });
+    }
 }

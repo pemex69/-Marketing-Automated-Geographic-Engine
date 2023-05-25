@@ -1,4 +1,4 @@
-import { mapa_agebs } from "./input maps.js";
+import { mapa_agebs } from "./inputs maps.js";
 
 let InputsData = []
 let displays = 0;

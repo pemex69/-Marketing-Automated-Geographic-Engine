@@ -3,6 +3,7 @@ const cors = require('cors');
 const compression = require('compression');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const bycrypt = require('bcrypt');
 const usersRoutes = require('./Users/CRUD/routes');
 const authRoutes = require('./Users/Auth/routes');
 const geolocationRoutes = require('./Geolocation/Map/routes');

@@ -105,7 +105,7 @@ document.getElementById('geolocateBtn').addEventListener('click', function () {
                             localStorage.setItem('Limitacion', limitacion);
                         }
 
-                        window.location.href = './input_geolocation.html';
+                        window.location.href = './inputs_geolocation.html';
 
                     }).catch(err => {
                         swal("Error", "Hubo un error.", "error");
@@ -219,7 +219,7 @@ document.getElementById('geolocateDensityBtn').addEventListener('click', functio
                             localStorage.setItem('Limitacion', limitacion);
                         }
 
-                        window.location.href = './input_geolocation.html';
+                        window.location.href = './inputs_geolocation.html';
 
                     }).catch(err => {
                         swal("Error", "Hubo un error.", "error");

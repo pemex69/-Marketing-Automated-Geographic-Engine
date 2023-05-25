@@ -41,16 +41,17 @@
 <body>
   <main>
     <div class="container">
-      <h1>Consulta tú perfil, <span id="username">${usr_username}</span></h1>
-      <h2>Datos de usuario</h2>
+      <h1>Consulta tú perfil, <strong><span id="username">${usr_username}</span></strong></h1>
       <h3>
-        <p>Nombre de usuario: <span id="username0">${usr_username}</span></p>
+        <p>Nombre de usuario: <input id="username0"></input></p>
         <br><br>
-        <p>Correo electrónico: <span id="email">${usr_email}</span></p>
+        <p>Correo electrónico: <input id="email"></input></p>
         <br><br>
-        <p>Contraseña: <span id="pass">${usr_password}</span></p>
+        <p>Contraseña: <input id="pass"></input></p>
+        <i class="bi bi-eye-slash" id="togglePassword"></i>
         <br><br>
       </h3>
+      <button type="button" class="btn btn-info" id="updateAcc">Guardar cambios</button>
       <br>
       <h2>Historial de uso</h2>
       <br>
@@ -64,6 +65,18 @@
     </div>
   </main>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    const togglePassword = document
+      .querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', () => {
+      const type = password
+        .getAttribute('type') === 'password' ?
+        'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('bi-eye');
+    });
+  </script>
 </body>
 
 </html>

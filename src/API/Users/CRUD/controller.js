@@ -1,6 +1,7 @@
 const { response } = require('express');
 const pool = require('../../magedb');
 const queries = require('./queries');
+const bcrypt = require('bcrypt');
 
 const getAllUsers = (req, res) => {
     pool.query(queries.getAllUsers, (error, results) => {
@@ -18,21 +19,28 @@ const getUserByID = (req, res) => {
 };
 
 const AddUser = (req, res) => {
-    const { usr_username, usr_email, usr_pass } = req.body;
+    let { usr_username, usr_email, usr_pass } = req.body;
     console.log(usr_username, usr_email, usr_pass);
     pool.query(queries.checkEmailExists, [usr_email], (error, results) => {
         if (error) throw error;
         if (results.rows.length) {
             res.send('Ese email ya existe.');
-        }
-        else {
-            pool.query(queries.addUser, [usr_username, usr_email, usr_pass], (error, results) => {
+        } else {
+            bcrypt.genSalt(10, (error, salt) => {
                 if (error) throw error;
-                res.status(201).send('Nuevo usuario agregado exitosamente.');
+                bcrypt.hash(usr_pass, salt, (error, hash) => {
+                    if (error) throw error;
+                    usr_pass = hash;
+                    pool.query(queries.addUser, [usr_username, usr_email, usr_pass], (error, results) => {
+                        if (error) throw error;
+                        res.status(201).send('Nuevo usuario agregado exitosamente.');
+                    });
+                });
             });
         }
     });
 };
+
 
 
 const deleteUserByID = (req, res) => {
@@ -63,18 +71,9 @@ const updateUserByID = (req, res) => {
             res.send('No existe el usuario.');
         }
         else {
-            //Checks if the email already exists
-            pool.query(queries.checkEmailExists, [usr_email], (error, results) => {
+            pool.query(queries.updateUserByID, [usr_username, usr_email, usr_pass, usr_id], (error, results) => {
                 if (error) throw error;
-                if (results.rows.length) {
-                    res.send('Ese email ya existe.');
-                }
-                else {
-                    pool.query(queries.updateUserByID, [usr_username, usr_email, usr_pass, usr_id], (error, results) => {
-                        if (error) throw error;
-                        res.status(200).send(`Datos del usuario con ID ${usr_id} actualizados exitosamente.`);
-                    });
-                }
+                res.status(200).send(`Datos del usuario con ID ${usr_id} actualizados exitosamente.`);
             });
         }
     });

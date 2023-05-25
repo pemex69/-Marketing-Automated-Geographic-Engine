@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Encuentra el lugar perfecto para tu negocio con Locationwise</title>
+    <script src="../js/login JWT.js"></script>
     <script src="../../node_modules/js-cookie/dist/js.cookie.min.js"></script>
-    <script src="../js/jwt validation.js"></script>
     <link rel="shortcut icon" href="../img/mageico.ico" type="image/x-icon">
     <script class="anchorjs"></script>
     <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -15,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
     <link rel="preconnect" href="../css/CSScustoms.css">
     <link rel="stylesheet" href="../css/CSScustoms.css">
+    <script src="../js/admin.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -64,19 +65,20 @@
                 <div class="col-sm-6">
                     <h2>Agregar administrador</h2>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Ingrese el correo electrónico">
+                        <input type="email" class="form-control" placeholder="email => admin">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">Agregar</button>
+                            <button class="btn btn-primary" type="button" id="addAdmin">Agregar</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <h2>Borrar Usuarios</h2>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Ingrese el correo electrónico">
+                        <input type="email" class="form-control" placeholder="email o id">
                         <div class="input-group-append">
-                            <button class="btn btn-danger" type="button">Borrar</button>
-                            <button class="btn btn-info">Listar Usuarios</button>
+                            <button class="btn btn-danger" type="button" id="deleteUser">Borrar</button>
+                            <button class="btn btn-info" id="allUsers">Listar Usuarios</button>
+                            <br><br>
                         </div>
                     </div>
                 </div>
@@ -114,6 +116,6 @@
             </center>
         </div>
     </footer>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
-
 </html>

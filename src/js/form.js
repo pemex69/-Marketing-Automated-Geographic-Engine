@@ -1,5 +1,6 @@
 let username = '';
 let email = '';
+const mageMail = 'helpme.mage@gmail.com';
 
 window.addEventListener('load', checkProtectedRoute);
 
@@ -54,15 +55,34 @@ function submitForm() {
     let message = document.getElementById('message').value;
     Email.send({
         Host: 'smtp.elasticemail.com',
-        Username: 'helpme.mage@gmail.com',
+        Username: mageMail,
         Password: 'C08AE430E6E36AA4AFFDDE8C130FC497B38A',
 
-        From: 'helpme.mage@gmail.com',
-        To: 'helpme.mage@gmail.com',
+        From: mageMail,
+        To: mageMail,
         Subject: "Duda de " + username,
-        Body: message + '\n\nResponder a ' + email
+        Body: message + '\n\n | Responder a ' + email
     }).then(
-        message => alert(message)
+        message => {
+            if (message == 'OK') {
+                swal({
+                    title: 'Mensaje enviado',
+                    text: 'Gracias por contactarnos, te responderemos a la brevedad.',
+                    icon: 'success',
+                    button: 'Ok'
+                });
+            }
+
+            else {
+                swal({
+                    title: 'Error',
+                    text: 'Hubo un error al enviar el mensaje, intenta nuevamente.',
+                    icon: 'error',
+                    button: 'Ok'
+                });
+            }
+
+        }
     );
     return false;
 }

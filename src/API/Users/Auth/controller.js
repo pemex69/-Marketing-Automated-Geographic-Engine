@@ -3,6 +3,8 @@ const pool = require('../../magedb');
 const queries = require('./queries');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
+
 
 const validateUser = (req, res) => {
     const { usr_email, usr_pass } = req.params;
@@ -11,12 +13,16 @@ const validateUser = (req, res) => {
         if (!results.rows.length) {
             res.send('No existe el usuario.');
         } else {
-            pool.query(queries.validateUser, [usr_email, usr_pass], (error, results) => {
+            let hash = results.rows[0].s.split(',')[3].trim();
+            hash = hash.substring(0, hash.length - 1);
+            bcrypt.compare(usr_pass, hash, (error, match) => {
                 if (error) throw error;
-                if (!results.rows.length) {
+                if (!match) {
                     res.send('Contraseña incorrecta.');
                 } else {
-                    const userId = results.rows[0].usr_id;
+                    let userId = results.rows[0].s.split(',')[0].trim();
+                    userId = userId.substring(1);
+                    console.log('User ID: ' + userId);
                     const token = jwt.sign({ userId }, 'secret', { expiresIn: '1w' });
                     console.log('Token: ' + token);
                     res.cookie('authToken', token, {
@@ -33,6 +39,8 @@ const validateUser = (req, res) => {
         }
     });
 };
+
+
 
 const verifyToken = (req, res, next) => {
     const authToken = req.cookies['authToken'];
