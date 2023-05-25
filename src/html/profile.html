@@ -40,24 +40,30 @@
 
 <body>
   <main>
-    <h1>Consulta tú perfil, <span id="username">${usr_username}</span></h1>
-    <h2>Datos de usuario</h2>
-    <h3>
-      <p>Nombre de usuario: <span id="username0">${usr_username}</span></p>
-      <p>Correo electrónico: <span id="email">${usr_email}</span></p>
-      <p>Contraseña: <span id="pass">${usr_password}</span></p>
-      <p>ID de usuario: <span id="id">${usr_id}</span></p>
-    </h3>
-    <br>
-    <h2>Historial de uso</h2>
-    <br>
-    <h2>Borrar tú cuenta</h2>
-    <h3>Al hacer esto pierdes acceso a todo lo relacionado a tu cuenta, incluyendo tus datos y tu historial de uso, así
-      como los servicios comprados sin usar.</h3>
-    <br>
-    <button type="button" class="btn btn-danger">Borrar cuenta</button>
-    </h3>
+    <div class="container">
+      <h1>Consulta tú perfil, <span id="username">${usr_username}</span></h1>
+      <h2>Datos de usuario</h2>
+      <h3>
+        <p>Nombre de usuario: <span id="username0">${usr_username}</span></p>
+        <br><br>
+        <p>Correo electrónico: <span id="email">${usr_email}</span></p>
+        <br><br>
+        <p>Contraseña: <span id="pass">${usr_password}</span></p>
+        <br><br>
+      </h3>
+      <br>
+      <h2>Historial de uso</h2>
+      <br>
+      <h2>Borrar tú cuenta</h2>
+      <br>
+      <button type="button" class="btn btn-danger" id="deleteAcc">Borrar cuenta</button>
+      <h3>Al hacer esto pierdes acceso a todo lo relacionado a tu cuenta, incluyendo tus datos y tu historial de uso.
+      </h3>
+      <br>
+      </h3>
+    </div>
   </main>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

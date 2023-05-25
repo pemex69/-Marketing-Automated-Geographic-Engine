@@ -10,9 +10,10 @@ const customersInputsRoutes = require('./Geolocation/Inputs/routes');
 const port = 3000;
 const app = express();
 const origin = 'http://127.0.0.1:5501';
+const smtp = 'https://smtpjs.com/v3/smtpjs.aspx?';
 
 app.use(cors({
-    origin: origin,
+    origin: [origin, smtp],
     credentials: true
 }));
 app.use(express.json());
@@ -25,8 +26,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
-
 app.use(express.static('public'));
+
 app.use('/locationwise/v1/users', usersRoutes);
 app.use('/locationwise/v1/auth', authRoutes);
 app.use('/locationwise/v1/geocode-settlement', geolocationRoutes);

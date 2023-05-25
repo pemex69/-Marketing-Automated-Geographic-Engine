@@ -1,31 +1,92 @@
-document.addEventListener('DOMContentLoaded', function (dataload) {
-    const UserAPI = 'http://localhost:3000/locationwise/v1/users/1';
-    fetch(UserAPI)
-        .then(response => response.json())
-        .then(data => {
+let userId = '';
+window.addEventListener('load', checkProtectedRoute);
 
-            username_data = JSON.stringify(data[0].usr_username);
-            username_data = username_data.replace(/"/g, '');
-            email_data = JSON.stringify(data[0].usr_email);
-            email_data = email_data.replace(/"/g, '');
-            pass_data = JSON.stringify(data[0].usr_pass);
-            pass_data = pass_data.replace(/"/g, '');
-            id_data = JSON.stringify(data[0].usr_id);
-            id_data = id_data.replace(/"/g, '');
+function checkProtectedRoute() {
+    const validateJWT = 'http://localhost:3000/locationwise/v1/auth/loginSession';
 
-            let usernameElement = document.getElementById('username');
-            let username0Element = document.getElementById('username0');
-            let passElement = document.getElementById('pass');            
-            let emailElement = document.getElementById('email');
-            let idElement = document.getElementById('id');
-            
-            idElement.innerHTML = id_data;
-            usernameElement.innerHTML = username_data;
-            username0Element.innerHTML = username_data;
-            emailElement.innerHTML = email_data;
-            passElement.innerHTML = pass_data;
-
-        }).catch(error => {
-            console.error(error);
+    fetch(validateJWT, {
+        credentials: 'include',
+        headers: {
+            'Authorization': 'Bearer' // No need to provide the token value here
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                response.json().then(res => {
+                    console.log(res);
+                    userId = JSON.parse(res.values).userId; // Parse the values string as JSON
+                    let userEndpoint = 'http://localhost:3000/locationwise/v1/users/data/' + userId;
+                    fetch(userEndpoint, {
+                        credentials: 'include'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                response.json().then(res => {
+                                    console.log(res);
+                                    document.getElementById('username').innerHTML = res[0].usr_username;
+                                    document.getElementById('username0').innerHTML = res[0].usr_username;
+                                    document.getElementById('email').innerHTML = res[0].usr_email;
+                                    document.getElementById('pass').innerHTML = res[0].usr_pass;
+                                });
+                            } else {
+                                throw new Error('Something went wrong');
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                });
+            } else {
+                window.location.href = './index.html';
+                throw new Error('JWT no validado');
+            }
+        })
+        .catch(error => {
+            console.log(error);
         });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const deleteAccBtn = document.getElementById('deleteAcc');
+    deleteAccBtn.addEventListener('click', () => {
+        deleteAccount();
+    });
 });
+
+function deleteAccount() {
+    swal({
+        title: "¿Estás seguro?",
+        text: "Una vez eliminada tu cuenta, no podrás recuperarla.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                const deleteUser = 'http://localhost:3000/locationwise/v1/users/delete/' + userId;
+                fetch(deleteUser, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(response);
+                            swal({
+                                title: "¡Tu cuenta ha sido eliminada!",
+                                text: "¡Gracias por usar LocationWise!",
+                                icon: "success",
+                            }).then(function () {
+                                window.location.href = "http://localhost:3000/locationwise/v1/auth/login";
+                            });
+                        } else {
+                            throw new Error('Something went wrong');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            } else {
+                swal("Tu cuenta está a salvo.");
+            }
+        });
+}

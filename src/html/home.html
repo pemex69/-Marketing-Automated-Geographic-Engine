@@ -53,7 +53,7 @@
   <main>
     <center>
       <div class="alert alert-success sen">
-        <strong>Usuario Registrado!</strong> Gracias por tu confianza en nuestras soluciones ${username}.
+        <strong>Usuario Registrado!</strong> Gracias por tu confianza en nuestras soluciones <span id="home_username">${username}</span>.
       </div>
     </center>
     <center>
@@ -102,7 +102,6 @@
         </div>
       </div>
       <br>
-      <center><a href="./index.html">Regresa al landing . . .</a></center>
   </main>
   <script>
     const body = document.querySelector("body");
@@ -124,7 +123,9 @@
     }
   </script>
   <footer>
-    <p>LocationWise® 2023</p>
+    <div class="container">
+      <p>LocationWise® 2023</p>
+    </div>
   </footer>
 </body>
 
