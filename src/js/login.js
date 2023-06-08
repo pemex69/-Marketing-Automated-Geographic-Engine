@@ -63,7 +63,7 @@ authBtn.addEventListener('click', function () {
         });
         return;
     }
-    if (password.length < 3 || password.length > 14) {
+    if (pass.length < 3 || pass.length > 14) {
         swal({
             title: "Error",
             text: "La contraseña debe tener entre 3 y 14 caracteres.",

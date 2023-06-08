@@ -265,7 +265,6 @@ function loadAGEBS(displays) {
                                                     coreEdadesElement.innerHTML = coreEdades;
 
                                                     if (Escolaridad != 'No se toma en cuenta') {
-                                                        alert(Escolaridad);
                                                         let coreEscolaridad = data[0][Escolaridad];
                                                         let coreEscolaridadElement = document.getElementById('coreEscolaridad');
                                                         coreEscolaridadElement.innerHTML = coreEscolaridad;
