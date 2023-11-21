@@ -78,7 +78,7 @@ const deleteUserByEmail = (req, res) => {
 
 const updateUserByID = (req, res) => {
     const usr_id = parseInt(req.params.usr_id);
-    const { usr_username, usr_email, usr_pass } = req.body;
+    let { usr_username, usr_email, usr_pass } = req.body;
     pool.query(queries.getUserByID, [usr_id], (error, results) => {
         if (error) throw error;
         //Checks the users existence
@@ -86,9 +86,16 @@ const updateUserByID = (req, res) => {
             res.send('No existe el usuario.');
         }
         else {
-            pool.query(queries.updateUserByID, [usr_username, usr_email, usr_pass, usr_id], (error, results) => {
+            bcrypt.genSalt(10, (error, salt) => {
                 if (error) throw error;
-                res.status(200).send(`Datos del usuario con ID ${usr_id} actualizados exitosamente.`);
+                bcrypt.hash(usr_pass, salt, (error, hash) => {
+                    if (error) throw error;
+                    usr_pass = hash;
+                    pool.query(queries.updateUserByID, [usr_username, usr_email, usr_pass, usr_id], (error, results) => {
+                        if (error) throw error;
+                        res.status(200).send(`Datos del usuario con ID ${usr_id} actualizados exitosamente.`);
+                    });
+                });
             });
         }
     });
