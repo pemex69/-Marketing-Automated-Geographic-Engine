@@ -7,6 +7,8 @@ let selected_cvegeo = '';
 export { selected_cvegeo };
 var mapa_agebs = L.map('map').setView([19.4, -99.1430056], 11.54);
 export { mapa_agebs };
+let lat = '';
+let lng = '';
 
 document.addEventListener('DOMContentLoaded', function () {
     let NivelSocioeconomico = localStorage.getItem("NivelSocioeconomico");
@@ -192,7 +194,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     .on('click', function (event) {
                         selected_cvegeo = element.cvegeo; // Update selected cvegeo when polygon is clicked
                         console.log(selected_cvegeo);
-                        L.popup().setLatLng(event.latlng).setContent(selected_cvegeo).openOn(mapa_agebs);
+                        lat = event.latlng.lat;
+                        lng = event.latlng.lng;
+                        let latlngliteral = 'https://nominatim.openstreetmap.org/reverse?format=xml&lat=' + lat + '&' + 'lon=' + lng + '&zoom=18&addressdetails=1';
+                        fetch(latlngliteral)
+                            .then(response => response.text())
+                            .then(data => {
+                                // parse the XML response
+                                const parser = new DOMParser();
+                                const xmlDoc = parser.parseFromString(data, "text/xml");
+                                // get the result element and its text content
+                                const resultElement = xmlDoc.getElementsByTagName("result")[0];
+                                let resultText = resultElement.textContent;
+                                console.log("im" + resultText);
+                                L.popup().setLatLng(event.latlng).setContent(resultText).openOn(mapa_agebs);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                        // L.popup().setLatLng(event.latlng).setContent(selected_cvegeo).openOn(mapa_agebs);
                         let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + selected_cvegeo;
                         fetch(cvegeoAPI)
                             .then(response => response.json())

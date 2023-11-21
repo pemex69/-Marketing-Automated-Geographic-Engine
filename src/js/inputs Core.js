@@ -12,6 +12,8 @@ let SituacionConyugal = '';
 let Religion = '';
 let Limitaciones = '';
 let NivelSocioeconomicoLabelConst = '';
+let lat = '';
+let lng = '';
 
 document.addEventListener("DOMContentLoaded", function () {
     InputsData = localStorage.getItem("InputsData");
@@ -168,7 +170,24 @@ function loadAGEBS(displays) {
                                         .bindPopup(element.cvegeo)
                                         .on('click', function (event) {
                                             let selected_cvegeo = element.cvegeo;
-                                            L.popup().setLatLng(event.latlng).setContent(selected_cvegeo).openOn(mapa_agebs);
+                                            lat = event.latlng.lat;
+                                            lng = event.latlng.lng;
+                                            let latlngliteral = 'https://nominatim.openstreetmap.org/reverse?format=xml&lat=' + lat + '&' + 'lon=' + lng + '&zoom=18&addressdetails=1';
+                                            fetch(latlngliteral)
+                                                .then(response => response.text())
+                                                .then(data => {
+                                                    // parse the XML response
+                                                    const parser = new DOMParser();
+                                                    const xmlDoc = parser.parseFromString(data, "text/xml");
+                                                    // get the result element and its text content
+                                                    const resultElement = xmlDoc.getElementsByTagName("result")[0];
+                                                    let resultText = resultElement.textContent;
+                                                    console.log("ic: " + resultText);
+                                                    L.popup().setLatLng(event.latlng).setContent(resultText).openOn(mapa_agebs);
+                                                })
+                                                .catch(error => {
+                                                    console.log(error);
+                                                });
                                             let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + selected_cvegeo;
                                             fetch(cvegeoAPI)
                                                 .then(response => response.json())
