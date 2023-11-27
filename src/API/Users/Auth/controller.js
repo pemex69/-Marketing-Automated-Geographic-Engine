@@ -3,18 +3,6 @@ const queries = require('./queries');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-// Explicit CORS configuration for testing
-const cors = require('cors');
-const origin = process.env.ORIGIN || 'http://127.0.0.1:5501';
-const corsOptions = {
-    origin: [origin],
-    credentials: true,
-    methods: 'GET, POST, PUT, PATCH, DELETE',
-    allowedHeaders: 'Content-Type, Authorization',
-};
-
-
-
 const validateUser = (req, res) => {
     const { usr_email, usr_pass } = req.params;
     pool.query(queries.checkEmailExists, [usr_email], (error, results) => {
@@ -52,24 +40,22 @@ const validateUser = (req, res) => {
 
 
 const verifyToken = (req, res, next) => {
-    cors(corsOptions)(req, res, () => {
-        console.log('Verifying token using CORS\n');
-        const authToken = req.cookies['authToken'];
-        console.log("Request cookies . . ., authToken = " + authToken);
-        if (!authToken) {
-            console.log('No token provided');
-            return res.status(401).json({ message: 'Unauthorized, No token found' });
-        }
-        try {
-            const decodedToken = jwt.verify(authToken, 'secret');
-            let values = JSON.stringify(decodedToken);
-            console.log("Decoded token: " + values);
-            return res.status(200).json({ values });
-        } catch (err) {
-            console.log('Error trying to verify token, expired ?');
-            return res.status(401).json({ message: 'Error trying to verify token, possibly expired.' });
-        }
-    });
+    console.log('Verifying token using CORS\n');
+    const authToken = req.cookies['authToken'];
+    console.log("Request cookies . . ., authToken = " + authToken);
+    if (!authToken) {
+        console.log('No token provided');
+        return res.status(401).json({ message: 'Unauthorized, No token found' });
+    }
+    try {
+        const decodedToken = jwt.verify(authToken, 'secret');
+        let values = JSON.stringify(decodedToken);
+        console.log("Decoded token: " + values);
+        return res.status(200).json({ values });
+    } catch (err) {
+        console.log('Error trying to verify token, expired ?');
+        return res.status(401).json({ message: 'Error trying to verify token, possibly expired.' });
+    }
 };
 
 const verifyAdmin = (req, res, next) => {
