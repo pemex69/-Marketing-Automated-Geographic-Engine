@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000;
 const origin = process.env.ORIGIN || 'http://127.0.0.1:5501';
 const backend = process.env.BACKEND || 'http://localhost:3000';
 const smtp = 'https://smtpjs.com/v3/smtpjs.aspx?';
+console.log('backend: ', backend);
 console.log('origin: ', origin);
 
 const app = express();
@@ -28,13 +29,6 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
-});
-app.options("/", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", origin, smtp, backend, 'https://smtpjs.com/v3/smtpjs.aspx?');
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.sendStatus(204);
 });
 
 app.use(express.static('public'));
