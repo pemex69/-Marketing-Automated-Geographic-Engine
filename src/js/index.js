@@ -11,7 +11,8 @@ function checkProtectedRoute() {
         headers: {
             'Authorization': 'Bearer', // No need to provide the token value here
             'Origin': 'https://pemex69.github.io/-Marketing-Automated-Geographic-Engine/' // frontend origin here
-        }
+        },
+        mode: 'cors'
     })
         .then(response => {
             if (response.ok) {
