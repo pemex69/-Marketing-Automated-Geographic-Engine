@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
-const bycrypt = require('bcrypt');
 const usersRoutes = require('./Users/CRUD/routes');
 const authRoutes = require('./Users/Auth/routes');
 const geolocationRoutes = require('./Geolocation/Map/routes');
@@ -16,6 +14,7 @@ const smtp = 'https://smtpjs.com/v3/smtpjs.aspx?';
 
 const app = express();
 app.use(cors({
+    origin: [origin, smtp],
     credentials: true
 }));
 
