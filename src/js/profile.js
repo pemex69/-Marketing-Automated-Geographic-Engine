@@ -1,12 +1,15 @@
+import { API } from './config.js';
+const api = API;
 let userId = '';
 let username = '';
 let email = '';
 let pass = '';
 
+
 window.addEventListener('load', checkProtectedRoute);
 
 function checkProtectedRoute() {
-    const validateJWT = 'http://localhost:3000/locationwise/v1/auth/loginSession';
+    const validateJWT = `${api}/auth/loginSession`;
 
     fetch(validateJWT, {
         credentials: 'include',
@@ -19,7 +22,7 @@ function checkProtectedRoute() {
                 response.json().then(res => {
                     console.log(res);
                     userId = JSON.parse(res.values).userId; // Parse the values string as JSON
-                    let userEndpoint = 'http://localhost:3000/locationwise/v1/users/data/' + userId;
+                    let userEndpoint = `${api}/users/data/${userId}`;
                     fetch(userEndpoint, {
                         credentials: 'include'
                     })
@@ -75,7 +78,7 @@ function deleteAccount() {
     })
         .then((willDelete) => {
             if (willDelete) {
-                const deleteUser = 'http://localhost:3000/locationwise/v1/users/delete/' + userId;
+                const deleteUser = `${api}/users/delete/${userId}`;
                 fetch(deleteUser, {
                     method: 'DELETE',
                     credentials: 'include'
@@ -154,7 +157,7 @@ function updateAccount() {
         })
             .then((willUpdate) => {
                 if (willUpdate) {
-                    const updateUser = 'http://localhost:3000/locationwise/v1/users/update/' + userId;
+                    const updateUser = `${api}/users/update/${userId}`;
                     const data = {
                         usr_username: formUsername,
                         usr_email: formEmail,

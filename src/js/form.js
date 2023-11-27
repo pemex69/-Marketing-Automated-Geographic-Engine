@@ -1,11 +1,20 @@
+import { API } from './config.js';
+const api = API;
+
 let username = '';
 let email = '';
 const mageMail = 'helpme.mage@gmail.com';
 
 window.addEventListener('load', checkProtectedRoute);
 
+document.addEventListener('DOMContentLoaded', function () {
+    //When using modules, functions and variables are not available in the global scope
+    const form = document.querySelector('form');
+    form.addEventListener('submit', submitForm);
+});
+
 function checkProtectedRoute() {
-    const validateJWT = 'http://localhost:3000/locationwise/v1/auth/loginSession';
+    const validateJWT = `${api}/auth/loginSession`;
 
     fetch(validateJWT, {
         credentials: 'include',
@@ -18,7 +27,7 @@ function checkProtectedRoute() {
                 response.json().then(res => {
                     console.log(res);
                     const userId = JSON.parse(res.values).userId; // Parse the values string as JSON
-                    let userEndpoint = 'http://localhost:3000/locationwise/v1/users/data/' + userId;
+                    let userEndpoint = `${api}/users/data/${userId}`;
                     fetch(userEndpoint, {
                         credentials: 'include'
                     })
@@ -73,7 +82,7 @@ function checkProtectedRoute() {
 }
 
 
-function submitForm() {
+function submitForm(event) {
     event.preventDefault();
     let message = document.getElementById('message').value;
     Email.send({

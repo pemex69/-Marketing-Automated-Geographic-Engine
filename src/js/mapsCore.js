@@ -7,6 +7,8 @@ let agebData = [];
 let lat = '';
 let lng = '';
 import { mapa_agebs } from "./maps.js";
+import { API } from './config.js';
+const api = API;
 
 document.addEventListener('DOMContentLoaded', () => {
     cvegeo = localStorage.getItem("cvegeo");
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const agebspan = document.getElementById('agebspan');
         agebspan.innerHTML = resultText;
 
-        let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + cvegeo;
+        let cvegeoAPI = `${api}/geocode-settlement/${cvegeo}`;
         fetch(cvegeoAPI)
             .then(response => response.json())
             .then(data => {
@@ -142,7 +144,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                 if (willProceed) {
                     swal(`En caso de inexistencia de AGEBS reintentar con un porcentaje más bajo o contactar a helpme.mage@gmail.com\n
             Obteniendo AGEBS similares para ${cvegeo} con un porcentaje de similaridad del ${similarity}% . . .`)
-                    let AGEBData = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + cvegeo;
+                    let AGEBData = `${api}/geocode-settlement/${cvegeo}`;
                     fetch(AGEBData)
                         .then(response => response.json())
                         .then(data => {
@@ -165,7 +167,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                                 lw_economiapred = 'A%2FB';
                             }
 
-                            let similarSettlements = 'http://localhost:3000/locationwise/v1/geocode-settlement/getsimilarsettlements/' + lw_economiapred + '/' + pobtotSTART + '/' + pobtotEND + '/' + graproesSTART + '/' + graproesEND + '/' + lw_edpromSTART + '/' + lw_edpromEND;
+                            let similarSettlements = `${api}/geocode-settlement/getsimilarsettlements/${lw_economiapred}/${pobtotSTART}/${pobtotEND}/${graproesSTART}/${graproesEND}/${lw_edpromSTART}/${lw_edpromEND}`;
                             fetch(similarSettlements)
                                 .then(response => response.json())
                                 .then(data => {
@@ -210,7 +212,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                                                         maxZoom: 18,
                                                         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                                     }).addTo(mapa_agebs);
-                                                    const drawAGEBS = 'http://localhost:3000/locationwise/v1/geocode-settlement/';
+                                                    const drawAGEBS = `${api}/geocode-settlement/`;
                                                     fetch(drawAGEBS)
                                                         .then(response => response.json())
                                                         .then(data => {
@@ -241,7 +243,7 @@ function getSimilarSettlements(cvegeo, similarity) {
                                                                                 });
 
                                                                             // L.popup().setLatLng(event.latlng).setContent(selected_cvegeo).openOn(mapa_agebs);
-                                                                            let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + selected_cvegeo;
+                                                                            let cvegeoAPI = `${api}/geocode-settlement/${selected_cvegeo}`;
                                                                             fetch(cvegeoAPI)
                                                                                 .then(response => response.json())
                                                                                 .then(data => {

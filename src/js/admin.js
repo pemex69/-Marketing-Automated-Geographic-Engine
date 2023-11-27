@@ -1,3 +1,6 @@
+import { API } from './config.js';
+const api = API;
+
 document.addEventListener('DOMContentLoaded', () => {
     const allUsers = document.getElementById('allUsers');
     const deleteUserButton = document.getElementById('deleteUser');
@@ -9,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getAllUsers() {
-    const allUsers = 'http://localhost:3000/locationwise/v1/users/all';
+    const allUsers = `${api}/users/all`;
     fetch(allUsers)
         .then(response => { return response.json(); })
         .then(data => {
@@ -48,7 +51,8 @@ function handleDeleteUser() {
 
 function deleteUserByID(id) {
     usr_id = parseInt(id);
-    const deleteUser = `http://localhost:3000/locationwise/v1/users/delete/${usr_id}`;
+    
+    const deleteUser = `${api}/users/delete/${usr_id}`;
     fetch(deleteUser, {
         method: 'DELETE'
     })
@@ -82,7 +86,7 @@ function deleteUserByID(id) {
 }
 function deleteUserByEmail(email) {
     usr_email = email;
-    const deleteUserByEmailAPI = `http://localhost:3000/locationwise/v1/users/delete/mail/${usr_email}`;
+    const deleteUserByEmailAPI = `${api}/users/delete/mail/${usr_email}`;
     fetch(deleteUserByEmailAPI, {
         method: 'DELETE'
     })
@@ -116,7 +120,7 @@ function deleteUserByEmail(email) {
 }
 function addAdminUser() {
     const usr_email = document.getElementById('adminEmail').value;
-    const addAdminAPI = `http://localhost:3000/locationwise/v1/users/admin/${usr_email}`;
+    const addAdminAPI = `${api}/users/admin/${usr_email}`;
     fetch(addAdminAPI, {
         method: 'POST'
     })

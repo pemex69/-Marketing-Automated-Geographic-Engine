@@ -1,5 +1,8 @@
+import { API } from './config.js';
+const api = API;
+
 function authLogin(email, pass) {
-    const url = 'http://localhost:3000/locationwise/v1/auth/login' + '/' + email + '/' + pass;
+    const url = `${api}/auth/login/${email}/${pass}`;
     const data = { usr_email: email, usr_pass: pass };
     fetch(url, {
         method: 'GET',

@@ -1,4 +1,6 @@
 import { mapa_agebs } from "./inputs maps.js";
+import { API } from './config.js';
+const api = API;
 
 let InputsData = []
 let displays = 0;
@@ -159,7 +161,7 @@ function loadAGEBS(displays) {
                         displayed.push(cvegeos[i]);
                     }
 
-                    const drawAGEBS = 'http://localhost:3000/locationwise/v1/geocode-settlement/';
+                    const drawAGEBS = `${api}/geocode-settlement/`;
                     fetch(drawAGEBS)
                         .then(response => response.json())
                         .then(data => {
@@ -188,7 +190,7 @@ function loadAGEBS(displays) {
                                                 .catch(error => {
                                                     console.log(error);
                                                 });
-                                            let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + selected_cvegeo;
+                                            let cvegeoAPI = `${api}/geocode-settlement/${selected_cvegeo}`;
                                             fetch(cvegeoAPI)
                                                 .then(response => response.json())
                                                 .then(data => {

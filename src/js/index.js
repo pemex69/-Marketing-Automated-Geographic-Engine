@@ -1,7 +1,10 @@
+import { API } from './config.js';
+const api = API;
+
 window.addEventListener('load', checkProtectedRoute);
 
 function checkProtectedRoute() {
-    const validateJWT = 'http://localhost:3000/locationwise/v1/auth/loginSession';
+    const validateJWT = `${api}/auth/loginSession`;
 
     fetch(validateJWT, {
         credentials: 'include',

@@ -8,15 +8,18 @@ const usersRoutes = require('./Users/CRUD/routes');
 const authRoutes = require('./Users/Auth/routes');
 const geolocationRoutes = require('./Geolocation/Map/routes');
 const customersInputsRoutes = require('./Geolocation/Inputs/routes');
-const port = 3000;
-const app = express();
-const origin = 'http://127.0.0.1:5501';
+require('dotenv').config();
+const port = process.env.PORT || 3000;
+const origin = process.env.ORIGIN || 'http://127.0.0.1:5501';
 const smtp = 'https://smtpjs.com/v3/smtpjs.aspx?';
 
+
+const app = express();
 app.use(cors({
     origin: [origin, smtp],
     credentials: true
 }));
+
 app.use(express.json());
 app.use(compression());
 app.use(cookieParser());

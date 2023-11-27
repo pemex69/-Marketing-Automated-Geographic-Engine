@@ -6,7 +6,8 @@
 
 let selected_cvegeo = '';
 export { selected_cvegeo };
-
+import { API } from './config.js';
+const api = API;
 let lat = '';
 let lng = '';
 let resultText = '';
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Fetching an API that gets a WKB geometry from database as string
     //Parse the string into a wkb object and then into a geojson object
-    const drawAGEBS = 'http://localhost:3000/locationwise/v1/geocode-settlement/';
+    const drawAGEBS = `${api}/geocode-settlement/`;
     fetch(drawAGEBS)
         .then(response => response.json())
         .then(data => {
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 console.log(error);
                             });
 
-                        let cvegeoAPI = 'http://localhost:3000/locationwise/v1/geocode-settlement/' + selected_cvegeo;
+                        let cvegeoAPI = `${api}/geocode-settlement/${selected_cvegeo}`;
                         fetch(cvegeoAPI)
                             .then(response => response.json())
                             .then(data => {

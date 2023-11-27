@@ -1,5 +1,7 @@
 let agebInputs = [];
 export { agebInputs };
+import { API } from './config.js';
+const api = API;
 
 document.getElementById('geolocateBtn').addEventListener('click', function () {
     swal({
@@ -59,7 +61,7 @@ document.getElementById('geolocateBtn').addEventListener('click', function () {
                     nivelsocioeconomico = 'E';
                 }
 
-                let url = 'http://localhost:3000/locationwise/v1/customers-inputs/customers-cvegeos/' + nivelsocioeconomico + '/' + edades + '/' + escolaridad + '/' + situacioneconomica + '/' + situacionescolar + '/' + situacionconyugal + '/' + religion + '/' + limitacion + '/';
+                let url = `${api}/customers-inputs/customers-cvegeos/${nivelsocioeconomico}/${edades}/${escolaridad}/${situacioneconomica}/${situacionescolar}/${situacionconyugal}/${religion}/${limitacion}/`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
@@ -173,7 +175,7 @@ document.getElementById('geolocateDensityBtn').addEventListener('click', functio
                     nivelsocioeconomico = 'E';
                 }
 
-                let url = 'http://localhost:3000/locationwise/v1/customers-inputs/customers-cvegeos-density/' + nivelsocioeconomico + '/' + edades + '/' + escolaridad + '/' + situacioneconomica + '/' + situacionescolar + '/' + situacionconyugal + '/' + religion + '/' + limitacion + '/';
+                let url = `${api}/customers-inputs/customers-cvegeos-density/${nivelsocioeconomico}/${edades}/${escolaridad}/${situacioneconomica}/${situacionescolar}/${situacionconyugal}/${religion}/${limitacion}/`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {

@@ -1,9 +1,11 @@
+import { API } from './config.js';
+const api = API;
 let userId = '';
-let username = '';
+
 
 window.addEventListener('load', checkProtectedRoute);
 function checkProtectedRoute() {
-    const validateJWT = 'http://localhost:3000/locationwise/v1/auth/loginSession';
+    const validateJWT = `${api}/auth/loginSession`;
 
     fetch(validateJWT, {
         credentials: 'include',
@@ -16,7 +18,7 @@ function checkProtectedRoute() {
                 response.json().then(res => {
                     console.log(res);
                     userId = JSON.parse(res.values).userId;
-                    let userEndpoint = 'http://localhost:3000/locationwise/v1/users/data/' + userId;
+                    let userEndpoint = `${api}/users/data/${userId}`;
                     fetch(userEndpoint, {
                         credentials: 'include'
                     })
@@ -25,7 +27,8 @@ function checkProtectedRoute() {
                                 response.json().then(res => {
                                     console.log(res);
                                     email = res[0].usr_email;
-                                    const adminVerify = 'http://localhost:3000/locationwise/v1/auth/adminSession/' + email;
+
+                                    const adminVerify = `${api}/auth/adminSession/${email}`;
 
                                     fetch(adminVerify, {
                                         credentials: 'include',

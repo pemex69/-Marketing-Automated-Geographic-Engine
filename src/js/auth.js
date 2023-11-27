@@ -1,5 +1,8 @@
+import { API } from './config.js';
+const api = API;
+
 function addUser(username, email, password) {
-    const url = 'http://localhost:3000/locationwise/v1/users/add';
+    const url = `${api}/users/add`;
     const data = { usr_username: username, usr_email: email, usr_pass: password };
     fetch(url, {
         method: 'POST',
