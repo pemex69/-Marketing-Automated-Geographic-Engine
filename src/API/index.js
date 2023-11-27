@@ -9,14 +9,12 @@ const customersInputsRoutes = require('./Geolocation/Inputs/routes');
 require('dotenv').config();
 const port = process.env.PORT || 3000;
 const origin = process.env.ORIGIN || 'http://127.0.0.1:5501';
-const backend = process.env.BACKEND || 'http://localhost:3000';
 const smtp = 'https://smtpjs.com/v3/smtpjs.aspx?';
-console.log('backend: ', backend);
-console.log('origin: ', origin);
+
 
 const app = express();
 app.use(cors({
-    origin: [origin, smtp, backend],
+    origin: [origin, smtp],
     credentials: true
 }));
 
@@ -24,7 +22,7 @@ app.use(express.json());
 app.use(compression());
 app.use(cookieParser());
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', origin, smtp, backend, 'https://smtpjs.com/v3/smtpjs.aspx?');
+    res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
