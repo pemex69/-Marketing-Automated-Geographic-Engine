@@ -10,7 +10,7 @@ require('dotenv').config();
 const port = process.env.PORT || 3000;
 const origin = process.env.ORIGIN || 'http://127.0.0.1:5501';
 const smtp = 'https://smtpjs.com/v3/smtpjs.aspx?';
-
+console.log('origin: ', origin);
 
 const app = express();
 app.use(cors({
