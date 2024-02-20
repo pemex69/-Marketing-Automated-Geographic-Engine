@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         NivelSocioeconomico = 'Medio Alto';
     }
     else if (NivelSocioeconomico == 'D+') {
-        NIvelSocioeconomico = 'Medio Bajo';
+        NivelSocioeconomico = 'Medio Bajo';
     }
     else if (NivelSocioeconomico == 'D') {
         NivelSocioeconomico = 'Bajo';

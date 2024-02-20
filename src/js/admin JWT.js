@@ -10,7 +10,7 @@ function checkProtectedRoute() {
     fetch(validateJWT, {
         credentials: 'include',
         headers: {
-            'Authorization': 'Bearer' // No need to provide the token value here
+            'Authorization': 'Bearer' // No need to provide the token value here 
         }
     })
         .then(response => {

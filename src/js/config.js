@@ -1,2 +1,2 @@
-export const DOMAIN = 'https://location-wise-backend.onrender.com';
+export const DOMAIN = 'http://localhost:3000';
 export const API = `${DOMAIN}/locationwise/v1`;
